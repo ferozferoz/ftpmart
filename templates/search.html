@@ -14,10 +14,10 @@
                     <img src="{{result.image.url}}" class="img-fluid" alt="">
                 </div>
                 <div class="col-md-9">
-                    <h4><a href="{% url 'ecomapp:productdetail' result.slug %}">{{result.title}}</a></h4>
+                    <h4><a href="{% url 'ecomm_app:product_detail' result.slug %}">{{result.title}}</a></h4>
                     <p>{{result.description|truncatewords:50}}</p>
                     <p>Return Policy: {{result.return_policy}}</p>
-                    <a href="{% url 'ecomapp:productdetail' result.slug %}" class="btn btn-primary">View Product</a>
+                    <a href="{% url 'ecomm_app:product_detail' result.slug %}" class="btn btn-primary">View Product</a>
                 </div>
             </div>
             {% endfor %}

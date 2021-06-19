@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}My Profile{% endblock %}
+{% block content %}
+<div class="container">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#profile">My Profile</a></li>
+        <li><a data-toggle="tab" href="#orders">My Orders</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="profile" class="tab-pane fade in active">
+            <h2 class="card-title">Detail Information</h2>
+            <p><span class="font-weight-bold">Name: </span> {{customer.full_name}}</p>
+            <p><span class="font-weight-bold">Username: </span> {{customer.user.username}}</p>
+            <p><span class="font-weight-bold">Email: </span> {{customer.user.email}}</p>
+            <p><span class="font-weight-bold">Email: </span> {{customer.mobile}}</p>
+            <p><span class="font-weight-bold">Address: </span> {{customer.house_no}} ,
+                {{customer.street}},{{customer.city}}, {{customer.pin_code}} , {{customer.landmark}} </p>
+            <p><span class="font-weight-bold">Joined on: </span> {{customer.joined_on}}</p>
+            <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+
+        <div id="orders" class="tab-pane in fade">
+            <table style="width:100%">
+                <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Order Status</th>
+                    <th>Order Time</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for order in order_items %}
+                <tr>
+
+                    <td>{{order.id}}</td>
+                    <td>{{order.order_status}}</td>
+                    <td>{{order.total}}</td>
+                    <td>{{order.created_at}}</td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

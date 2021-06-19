@@ -1,77 +1,104 @@
+{% load static %}
 <html lang="en">
-
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}CityMart - Shop Smart! {% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <a class="navbar-brand" href="{% url 'ecomapp:home' %}">CityMart</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'ecomm_app:home' %}">CityMart</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'ecomapp:home' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'ecomm_app:home' %}">Home </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
+                <a class="nav-link dropdown-toggle dropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Categories
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'ecomapp:allproducts' %}">Food and Beverages</a>
-                <a class="dropdown-item" href="{% url 'ecomapp:allproducts' %}">Grocery</a>
-                <a class="dropdown-item" href="{% url 'ecomapp:allproducts' %}">Kitchen Essentials</a>
-                <a class="dropdown-item" href="{% url 'ecomapp:allproducts' %}">Oils</a>
+               		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for category in categories %}
+                    {% if not category.child.all %}
+                    <a class="dropdown-item" href="{% url 'ecomm_app:category_products' category.slug %}">{{category.name}}</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'ecomm_app:category_products' category.slug %}">{{category.name}}</a>
+                    <div class="dropdown-sub-menu" aria-labelledby="navbarDropdown">
+                        {% for sub_category in category.child.all %}
+                        <a class="dropdown-item" href="{% url 'ecomm_app:sub_category_products' sub_category.slug %}">{{sub_category.name}}</a>
+                        {% endfor %}
+                    </div>
+
+                    {% endif %}
+
+                    {% endfor %}
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'ecomapp:mycart' %}">Cart <span class="badge" style="background: red; color: #fff">{{cart.cartproduct_set.all|length }}</span></a>
+                <a class="nav-link" href="{% url 'ecomm_app:my_cart' %}">Cart <span class="badge"
+                                                                                 style="background: red; color: #fff">{{cart.cartproduct_set.all|length }}</span></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Account
+            <li class="nav-item dropdown1">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    My Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% if request.user.customer %}
-                <a class="dropdown-item" href="{% url 'ecomapp:customerprofile' %}">My Profile</a>
-                <a class="dropdown-item" href="{% url 'ecomapp:customerlogout' %}">Logout</a>
-                {% else %}
-                <a class="dropdown-item" href="{% url 'ecomapp:customerregistration' %}">Register</a>
-                <a class="dropdown-item" href="{% url 'ecomapp:customerlogin' %}">Login</a>
-                {% endif %}
+                    {% if request.user.customer %}
+                    <a class="dropdown-item" href="{% url 'user_management_app:customer_profile' %}">My Profile</a>
+                    <a class="dropdown-item" href="{% url 'user_management_app:customer_logout' %}">Logout</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'user_management_app:customer_registration' %}">Register</a>
+                    <a class="dropdown-item" href="{% url 'user_management_app:customer_login' %}">Login</a>
+                    {% endif %}
                 </div>
             </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" action="{% url 'ecomapp:search' %}" method="GET">
-            <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
-            <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-        </nav>
-    <hr>
+        </ul>
+
+    </div>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'ecomm_app:search' %}" method="GET">
+        <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+               required>
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<hr>
 
 {% if messages %}
-  {% for msg in messages %}
-    <div class="alert alert-info alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      {{msg.message}}
-    </div>
-  {% endfor %}
+{% for msg in messages %}
+<div class="alert alert-info alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {{msg.message}}
+</div>
+{% endfor %}
 {% endif %}
-   
-    {% block content %}
-    {% endblock %}
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% block content %}
+{% endblock %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

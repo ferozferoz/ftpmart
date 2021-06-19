@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}All product{% endblock %}
+
+{% block content %}
+
+<div class = "bread">
+ <ul class="breadcrumb">
+    <li><a href="{% url 'ecomm_app:home' %}">Home</a></li>
+    <li>&nbsp /  &nbsp</li>
+     {% for cat in bread_crumb %}
+        <li><a href="{% url 'ecomm_app:category_products' cat.slug %}">{{cat.name}}</a></li>
+        <li>&nbsp /  &nbsp</li>
+     {% endfor %}
+  </ul>
+</div>
+<div class = "products">
+    <div class="product-items">
+        {% for p in category_items %}
+        <div class="product">
+            <div class="product-content">
+                <div class="product-img">
+                    <a href="{% url 'ecomm_app:product_detail' p.slug %}" >
+                    <img src="{{p.image.url}}" alt="product image">
+                    </a>
+                </div>
+                <div class="product-btns">
+                    <a href="{% url 'ecomm_app:add_to_cart' p.id %}" class="btn btn-cart"> add to
+                        cart <span><i class="fas fa-plus"></i></span>
+                    </a>
+
+                    <a href="{% url 'ecomm_app:add_to_cart' p.id %}" class="btn btn-buy"> buy now
+                        <span><i class="fas fa-shopping-cart"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <div class="product-info-top">
+                    <h2 class="sm-title">lifestyle</h2>
+                    <div class="rating">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="far fa-star"></i></span>
+                    </div>
+                </div>
+                <a href="{% url 'ecomm_app:product_detail' p.slug %}" class="product-name">{{p.name}}</a>
+                <p class="product-price">Rs. {{p.display_original_selling_price}} </p>
+                <p class="product-price">Rs. {{p.display_new_selling_price}}</p>
+            </div>
+            <div class="off-info">
+                <h2 class="sm-title">Offer</h2>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
