@@ -22,6 +22,7 @@ class CustomerRegistrationView(CreateView):
         user = User.objects.create_user(username, email, password)
         form.instance.user = user
         login(self.request, user)
+        #code to send meassage
         # subject = 'welcome to CityMart'
         # message = f'Hi {user.username}, thank you for registering in FtpMart.'
         # email_from = settings.EMAIL_HOST_USER
