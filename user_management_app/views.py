@@ -9,6 +9,7 @@ from .forms import *
 from ecomm_app.views import CartNo
 from ecomm_app.models import Order
 # Create your views here.
+#added comment to check
 
 class CustomerRegistrationView(CreateView):
     template_name = "customer_registration.html"
