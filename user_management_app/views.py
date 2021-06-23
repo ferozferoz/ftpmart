@@ -75,10 +75,12 @@ class CustomerProfileView(CartNo, TemplateView):
         print(context)
         customer = self.request.user.customer
         context['customer'] = customer
-        orders = Order.objects.filter(customer = customer).all()[0:5]
+        orders = Order.objects.filter(customer = customer).all()
         print(orders)
         context['order_items'] = orders
         return context
+
+
 
 
 class PasswordForgotView(FormView):

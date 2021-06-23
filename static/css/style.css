@@ -21,6 +21,7 @@ img{
     display: block;
 }
 .container{
+    background: var(--alice-blue);
     width: 88vw;
     margin: 0 auto;
 }

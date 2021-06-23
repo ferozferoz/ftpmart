@@ -22,7 +22,7 @@ class ECommMixin(object):
         print("method - EcommMixin, Cart id -" + str(cart_id))
 
         if cart_id:
-            cart_obj = Cart.objects.get(id=cart_id)
+            cart_obj = Cart.objects.get(pk=cart_id)
             print("method - EcommMixin, customer - " + str(cart_obj))
             if request.user.is_authenticated and request.user.customer:
                 cart_obj.customer = request.user.customer
@@ -171,9 +171,11 @@ class MyCartView(CartNo, ECommMixin, TemplateView):
         cart_id = self.request.session.get("cart_id", None)
         if cart_id:
             cart = Cart.objects.get(id=cart_id)
+
         else:
             cart = None
         context['cart'] = cart
+
         return context
 
 
@@ -225,9 +227,11 @@ class CheckoutView(ECommMixin, CreateView):
         cart_id = self.request.session.get("cart_id", None)
         if cart_id:
             cart_obj = Cart.objects.get(id=cart_id)
+            customer = Customer.objects.filter(user=cart_obj.customer.user)
         else:
             cart_obj = None
         context['cart'] = cart_obj
+        context['customer'] = customer
         return context
 
     def form_valid(self, form):

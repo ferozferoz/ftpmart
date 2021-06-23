@@ -36,12 +36,22 @@
             </table>
         </div>
         <div class="col-md-6">
+            {% if customer.house_no is not None and customer.house_no is not None %}
+            <tr><td></td><td>{{customer.full_name}}</td></tr>
+            <tr><td></td><td>{{customer.house_no}}</td></tr>
+            <tr><td></td><td>{{customer.street}}</td></tr>
+            <tr><td></td><td>{{customer.city}}</td></tr>
+            <tr><td></td><td>{{customer.pin_code}}</td></tr>
+            <button class="btn btn-primary">Place Order</button>
+
+            {% else %}
             <h3>Checkout Form</h3>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button class="btn btn-primary">Place Order</button>
             </form>
+            {% endif %}
         </div>
     </div>
 </div>
