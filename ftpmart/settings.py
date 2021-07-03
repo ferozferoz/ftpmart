@@ -40,7 +40,15 @@ INSTALLED_APPS = [
     'ecomm_app',
     'inventory_management_app',
     'user_management_app',
+    'mathfilters'
 ]
+
+CACHES = {
+   'default': {
+      'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+      'LOCATION': '/cache/memcached.sock',
+   }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

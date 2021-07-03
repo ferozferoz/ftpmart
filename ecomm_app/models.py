@@ -54,7 +54,7 @@ class Item(models.Model):
     view_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Cart(models.Model):
@@ -78,18 +78,18 @@ class CartProduct(models.Model):
 
 
 ORDER_STATUS = (
-    ("Order Received", "Order Received"),
-    ("Order Processing", "Order Processing"),
-    ("On the way", "On the way"),
-    ("Order Completed", "Order Completed"),
-    ("Order Cancelled", "Cancel Order"),
-    ("Return Requested","Request Return"),
+    ("ORDER RECEIVED", "ORDER_RECEIVED"),
+    ("ORDER PROCESSING", "ORDER_PROCESSING"),
+    ("ON THE WAY", "ON_THE_WAY"),
+    ("ORDER COMPLETED", "ORDER_COMPLETED"),
+    ("ORDER CANCELLED", "ORDER_CANCELLED"),
+    ("RETURN REQUESTED","RETURN_REQUESTED"),
 )
 
-METHOD = (
-    ("Cash On Delivery", "Cash On Delivery"),
-    ("Khalti", "Khalti"),
-    ("Esewa", "Esewa"),
+PAYMENT_METHOD = (
+    ("CASH ON DELIVERY", "CASH_ON_DELIVERY"),
+    ("GPAY", "GPAY"),
+    ("CREDIT CARD", "CREDIT_CARD"),
 )
 
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 from django.views.generic import TemplateView, View, CreateView, FormView, DetailView, ListView, UpdateView
 from django.contrib.auth import authenticate, login, logout
 from .utils import password_reset_token
@@ -7,7 +8,10 @@ from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from .forms import *
 from ecomm_app.views import CartNo
-from ecomm_app.models import Order
+from ecomm_app.models import Order, Cart
+from .models import Customer
+
+
 # Create your views here.
 
 class CustomerRegistrationView(CreateView):
@@ -22,7 +26,7 @@ class CustomerRegistrationView(CreateView):
         user = User.objects.create_user(username, email, password)
         form.instance.user = user
         login(self.request, user)
-        #code to send meassage
+        # code to send meassage
         # subject = 'welcome to CityMart'
         # message = f'Hi {user.username}, thank you for registering in FtpMart.'
         # email_from = settings.EMAIL_HOST_USER
@@ -61,6 +65,28 @@ class CustomerLoginView(FormView):
             return self.success_url
 
 
+def editCustomerProfileView(request):
+    success_message=""
+    if request.method == "POST":
+
+        name = request.POST['name']
+        mobile = request.POST['mobile']
+        house_no = request.POST['houseNo']
+        street = request.POST['street']
+        city = request.POST['city']
+        pin = request.POST['pin']
+        landmark = request.POST['landmark']
+
+        customer = Customer.objects.filter(user=request.user)
+        customer.update(user = request.user, full_name = name, mobile = mobile
+                                ,house_no=house_no,street=street,city=city,pin_code=pin,landmark=landmark)
+
+
+        success_message = "User "+request.user.username+" updated successfully"
+
+    return HttpResponse({'success_message':success_message,'customer_data':customer})
+
+
 class CustomerProfileView(CartNo, TemplateView):
     template_name = "customer_profile.html"
 
@@ -73,15 +99,13 @@ class CustomerProfileView(CartNo, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
         customer = self.request.user.customer
         context['customer'] = customer
-        orders = Order.objects.filter(customer = customer).all()
-        print(orders)
+        orders = Order.objects.filter(customer=customer).all()
         context['order_items'] = orders
+        context['form_submitted'] = True
+
         return context
-
-
 
 
 class PasswordForgotView(FormView):
@@ -109,4 +133,3 @@ class PasswordForgotView(FormView):
             fail_silently=False,
         )
         return super().form_valid(form)
-

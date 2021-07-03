@@ -5,7 +5,7 @@
 
 <div class = "products">
     <div class="product-items">
-        {% for p in all_products %}
+        {% for p in all_items %}
         <div class="product">
             <div class="product-content">
                  <a href="{% url 'ecomm_app:product_detail' p.slug %}" >

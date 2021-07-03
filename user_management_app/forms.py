@@ -40,3 +40,21 @@ class PasswordForgotForm(forms.Form):
                 "Customer with this account does not exists..")
         return e
 
+
+class CustomerProfileForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+
+        fields = ["full_name", "house_no", "street", "city", "pin_code", "landmark", "mobile"]
+
+        widgets = {
+
+                "full_name": forms.TextInput(attrs={'class':'form-control'}),
+                "house_no": forms.TextInput(attrs={'class':'form-control'}),
+                "street": forms.TextInput(attrs={'class':'form-control'}),
+                "city": forms.TextInput(attrs={'class':'form-control'}),
+                "pin_code": forms.TextInput(attrs={'class': 'form-control'}),
+                "land_mark": forms.TextInput(attrs={'class': 'form-control'}),
+                "mobile": forms.TextInput(attrs={'class': 'form-control'})
+
+        }

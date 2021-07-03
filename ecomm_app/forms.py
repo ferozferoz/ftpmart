@@ -5,7 +5,9 @@ from phonenumber_field.formfields import PhoneNumberField
 
 
 class CheckoutForm(forms.ModelForm):
+
     class Meta:
+
         model = Customer
 
         fields = ["full_name", "house_no", "street", "city", "pin_code", "landmark"]

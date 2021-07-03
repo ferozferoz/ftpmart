@@ -3,6 +3,8 @@
 {% block title %}{{product.title}}{% endblock %}
 
 {% block content %}
+{% load mathfilters %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -30,12 +32,18 @@
                       <td>{{product.sell_quantity}}</td>
                     </tr>
                   <tr>
-                      <th>MRP</th>
+                      <th>Actual Price</th>
                       <td>Rs.{{product.display_original_selling_price}}</td>
                     </tr>
                   <tr>
-                      <th>Selling Price</th>
+                      <th>Offer Price</th>
                       <td>Rs.{{product.display_new_selling_price}}</td>
+                    </tr>
+                    <tr>
+                      <th>Discount</th>
+                        {% with numerator=product.display_original_selling_price|sub:product.display_new_selling_price|mul:100 %}
+                      <td>{{numerator |div:product.display_original_selling_price|floatformat:0 }} %</td>
+                        {% endwith%}
                     </tr>
                    <tr>
                       <th>Product Details</th>

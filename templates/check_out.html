@@ -35,15 +35,18 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
-            {% if customer.house_no is not None and customer.house_no is not None %}
-            <tr><td></td><td>{{customer.full_name}}</td></tr>
-            <tr><td></td><td>{{customer.house_no}}</td></tr>
-            <tr><td></td><td>{{customer.street}}</td></tr>
-            <tr><td></td><td>{{customer.city}}</td></tr>
-            <tr><td></td><td>{{customer.pin_code}}</td></tr>
-            <button class="btn btn-primary">Place Order</button>
-
+        <div class="col-md-6" id="div_add">
+            {% if customer.house_no is not None and customer.full_name is not None %}
+            <h2 class="card-title">Ship to this address</h2>
+            <p id="name"><span class="font-weight-bold">Name: </span> {{customer.full_name}}</p>
+            <p id="mobile"><span class="font-weight-bold">Mobile: </span> {{customer.mobile}}</p>
+            <p id="house_no"><span class="font-weight-bold">House No: </span> {{customer.house_no}}</p>
+            <p id="street"><span class="font-weight-bold">Street: </span> {{customer.street}}</p>
+            <p id="city"><span class="font-weight-bold">City: </span> {{customer.city}}</p>
+            <p id="pin_code"><span class="font-weight-bold">Pin Code: </span> {{customer.pin_code}}</p>
+            <p id="landmark"><span class="font-weight-bold">Landmark: </span> {{customer.landmark}}</p>
+            <a onclick="editProfile()" class="btn btn-primary">Edit</a>
+            <a href="{% url 'ecomm_app:ship_order' %}" class="btn btn-primary">Ship to this Address</a>
             {% else %}
             <h3>Checkout Form</h3>
             <form action="" method="POST">
@@ -55,6 +58,82 @@
         </div>
     </div>
 </div>
+
+<script>
+var profileInfo;
+
+function editProfile(){
+
+    profileInfo = document.getElementById("div_add").innerHTML;
+    document.getElementById("div_add").innerHTML =
+    `<form id="post-form-1">
+    {% csrf_token %}
+    <div class="form-group col-md-4">
+    <label>Name</label>
+	<input type="text" id="form-name" class="form-control" value="${document.getElementById('name').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4" >
+    <label>Mobile</label>
+	<input type="text" id="form-mobile" class="form-control" value="${document.getElementById('mobile').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>House No.</label>
+	<input type="text" id="form-houseNo" class="form-control" value="${document.getElementById('house_no').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>Street</label>
+	<input type="text" id="form-street" class="form-control" value="${document.getElementById('street').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>city</label>
+	<input type="text" id="form-city" class="form-control" value="${document.getElementById('city').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>pin code</label>
+	<input type="text" id="form-pin" class="form-control" value="${document.getElementById('pin_code').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>land mark</label>
+	<input type="text" id="form-landmark" class="form-control" value="${document.getElementById('landmark').childNodes[1].data}"><br>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	<button type="submit" class="btn btn-primary" onclick="cancelEditForm()">Cancel</button>
+	</div>`;
+
+}
+
+function cancelEditForm(){
+    document.getElementById("div_add").innerHTML = profileInfo;
+}
+
+
+$(document).on('submit','#post-form-1',function(e){
+    e.preventDefault();
+    $.ajax({
+        type:'POST',
+        url:'/profile_edit',
+        data:{
+            name:$('#form-name').val(),
+            mobile:$('#form-mobile').val(),
+            houseNo:$('#form-houseNo').val(),
+            street:$('#form-street').val(),
+            city:$('#form-city').val(),
+            pin:$('#form-pin').val(),
+            landmark:$('#form-landmark').val(),
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+        },
+        success: function(data){
+            $('#div_add').load(" #div_add");
+
+        }
+
+
+    })
+})
+</script>
+
+
 {% endblock %}
 
 

@@ -19,11 +19,8 @@ from user_management_app.models import Customer
 class ECommMixin(object):
     def dispatch(self, request, *args, **kwargs):
         cart_id = request.session.get("cart_id")
-        print("method - EcommMixin, Cart id -" + str(cart_id))
-
         if cart_id:
             cart_obj = Cart.objects.get(pk=cart_id)
-            print("method - EcommMixin, customer - " + str(cart_obj))
             if request.user.is_authenticated and request.user.customer:
                 cart_obj.customer = request.user.customer
                 cart_obj.save()
@@ -32,18 +29,20 @@ class ECommMixin(object):
 
 """Mixin class that contain common cart objects"""
 
-
 class CartNo(object):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart_id = self.request.session.get("cart_id", None)
         if cart_id:
-            cart = Cart.objects.get(id=cart_id)
+            cart = get_object_or_404(Cart, id=cart_id)
         else:
             cart = None
+
         context['cart'] = cart
-        context['categories'] = Category.objects.filter(parent=None)
+        context['categories'] = Category.objects.all()
+        context['category_nav'] = Category.objects.filter(parent_id=None)
+        context['all_items'] = Item.objects.all()
         return context
 
 
@@ -55,8 +54,6 @@ class HomeView(ECommMixin, CartNo, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['all_products'] = Item.objects.all()
-
         return context
 
 
@@ -70,12 +67,12 @@ class CategoryProductsView(CartNo, ECommMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category_slug = self.kwargs['slug']
-        category = Category.objects.get(slug=category_slug)
+        category = context['categories'].get(slug=category_slug)
         bread_crumb = category.__str__().split('->')
 
         list_objects = []
         for cat in bread_crumb:
-            list_objects.append(Category.objects.get(name=cat))
+            list_objects.append(context['categories'].get(name=cat))
 
         category_items = category.category.all()
         context['category_items'] = category_items
@@ -91,11 +88,11 @@ class SubCategoryProductsView(CartNo, ECommMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category_slug = self.kwargs['slug']
-        category = Category.objects.get(slug=category_slug)
+        category = context['categories'].get(slug=category_slug)
         bread_crumb = category.__str__().split('->')
         list_objects = []
         for cat in bread_crumb:
-            list_objects.append(Category.objects.get(name=cat))
+            list_objects.append(context['categories'].get(name=cat))
 
         category_items = category.sub_category.all()
         context['category_items'] = category_items
@@ -110,8 +107,8 @@ class ProductDetailView(CartNo, ECommMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         url_slug = self.kwargs['slug']
-        product = Item.objects.get(slug=url_slug)
-        similar_product = Item.objects.filter(category=product.category).exclude(slug=url_slug)
+        product = context['all_items'].get(slug=url_slug)
+        similar_product = context['all_items'].filter(category=product.category).exclude(slug=url_slug)
         product.view_count += 1
         product.save()
         context['product'] = product
@@ -168,13 +165,6 @@ class MyCartView(CartNo, ECommMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart_id = self.request.session.get("cart_id", None)
-        if cart_id:
-            cart = Cart.objects.get(id=cart_id)
-
-        else:
-            cart = None
-        context['cart'] = cart
 
         return context
 
@@ -210,6 +200,21 @@ class ManageCartView(ECommMixin, View):
         return redirect("ecomm_app:my_cart")
 
 
+class ShipOrderView(View):
+
+    def get(self, request, *args, **kwargs):
+        cart_id = self.kwargs.get('cart_id')
+        if cart_id:
+            cart_obj = Cart.objects.get(id=cart_id)
+            Order.objects.create(cart = cart_obj,
+                                 customer = cart_obj.customer,
+                                 subtotal = cart_obj.total,
+                                 discount = 0,
+                                 total = cart_obj.total,
+                                 order_status = 'Order Received')
+        return render(reverse_lazy("ecomm_app:order_placed"))
+
+
 class CheckoutView(ECommMixin, CreateView):
     template_name = "check_out.html"
     form_class = CheckoutForm
@@ -227,18 +232,19 @@ class CheckoutView(ECommMixin, CreateView):
         cart_id = self.request.session.get("cart_id", None)
         if cart_id:
             cart_obj = Cart.objects.get(id=cart_id)
-            customer = Customer.objects.filter(user=cart_obj.customer.user)
+            customer = Customer.objects.get(user=cart_obj.customer.user)
         else:
             cart_obj = None
         context['cart'] = cart_obj
         context['customer'] = customer
+        print(context)
         return context
 
     def form_valid(self, form):
         cart_id = self.request.session.get("cart_id")
         if cart_id:
             cart_obj = Cart.objects.get(id=cart_id)
-            Order.objects.update_or_create(cart = cart_obj,
+            Order.objects.create(cart = cart_obj,
                                  customer = cart_obj.customer,
                                  subtotal = cart_obj.total,
                                  discount = 0,
