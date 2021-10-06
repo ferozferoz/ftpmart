@@ -2,6 +2,7 @@
 
 {% block title %}Customer Login{% endblock %}
 
+
 {% block content %}
 <style>
     .errorlist {
@@ -16,13 +17,13 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
-                <button class="btn btn-primary">Login as a Customer</button>
+                <button class="btn btn-primary">Login</button>
                 {% if error %}
                 <li style="color: red;">{{error}}</li>
                 {% endif %}
             </form>
             <p>Forgot Password?<a href="{% url 'user_management_app:password_forgot' %}">Reset now.</a></p>
-            <p> or dont have account? <a href="{% url 'user_management_app:customer_registration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register here</a></p>
+            <p> or dont have account? <a href="{% url 'user_management_app:registration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register here</a></p>
         </div>
     </div>
 </div>

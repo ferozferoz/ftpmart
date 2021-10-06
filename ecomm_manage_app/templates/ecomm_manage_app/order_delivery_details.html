@@ -1,0 +1,97 @@
+{% extends 'ecomm_manage_app/manager_base.html' %}
+
+{% block title %} My cart{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if cart.cartproduct_set.all %}
+            <h4>Order & Delivery Status </h4>
+            <table class="table">
+                <thead>
+
+                <tr>
+                    <th>SN</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for cp in cart.cartproduct_set.all %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img src="{{cp.product.image_1.url}}" alt="" width="25%"></img></td>
+                    <td>{{cp.product.name}}</td>
+                    <td>{{cp.rate}}</td>
+                    <td>{{cp.quantity}}</td>
+                    <td>{{cp.subtotal}}</td>
+
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="4" class="text-right">Total</th>
+                    <th>Rs. {{cart.total}}</th>
+                </tr>
+
+                <tr>
+                    <th>Order id</th>
+                    <th>
+                        <div id="order_id">{{order_obj.id}}</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Order Status</th>
+                    <th>
+                        <div id="order_status">{{order_obj.order_status}}</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><form action="{% url 'ecomm_manage_app:order_delivery_update' order_obj.id %}" method="GET">
+                        {% csrf_token %}
+                        <label for="delivery">Update Delivery Status</label>
+                        <select name="delivery" id="delivery">
+                            <option value="PICKED">Picked</option>
+                            <option value="DELIVERED">Delivered</option>
+                            <option value="ABORTED">Aborted</option>
+                        </select>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                    </form></th>
+                </tr>
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+    order_no = $("#order_id").text()
+    setInterval(function(){
+    $.ajax({
+
+        type : 'GET',
+        url : "{% url 'ecomm_manage_app:get_order_status' %}",
+        data : {order_id:order_no},
+        success: function(response){
+            $('#order_status').text(response["order_status"]);
+
+        }
+
+    })
+    },60000)
+})
+
+
+</script>>
+
+{% endblock %}

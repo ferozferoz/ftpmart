@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import Order, Customer, User,  Item
+from django.core.exceptions import ValidationError
+
+from .models import Customer
 from phonenumber_field.formfields import PhoneNumberField
 
 
@@ -14,71 +16,46 @@ class CheckoutForm(forms.ModelForm):
 
         widgets={
 
-                "full_name": forms.TextInput(attrs={'class':'form-control'}),
-                "house_no": forms.TextInput(attrs={'class':'form-control'}),
-                "street": forms.TextInput(attrs={'class':'form-control'}),
-                "city": forms.TextInput(attrs={'class':'form-control'}),
+                "full_name": forms.TextInput(attrs={'class': 'form-control'}),
+                "house_no": forms.TextInput(attrs={'class': 'form-control'}),
+                "street": forms.TextInput(attrs={'class': 'form-control'}),
+                "city": forms.TextInput(attrs={'class': 'form-control'}),
                 "pin_code": forms.TextInput(attrs={'class': 'form-control'}),
-                "land_mark": forms.TextInput(attrs={'class': 'form-control'})
+                "landmark": forms.TextInput(attrs={'class': 'form-control'}),
 
         }
 
+    def clean(self):
+        cleaned_data = super().clean()
+        full_name = cleaned_data.get("full_name")
+        house_no = cleaned_data.get("house_no")
+        street = cleaned_data.get("street")
+        city = cleaned_data.get("city")
+        pin_code = cleaned_data.get("pin_code")
+        landmark = cleaned_data.get("landmark")
 
-class ProductForm(forms.ModelForm):
-    more_images = forms.FileField(required=False, widget=forms.FileInput(attrs={
-        "class": "form-control",
-        "multiple": True
-    }))
+        if full_name is None:
+            raise ValidationError(
+                "full name cannot be empty"
+            )
+        if house_no is None:
+            raise ValidationError(
+                "house number cannot be empty"
+            )
+        if street is None:
+            raise ValidationError(
+                "street cannot be empty"
+            )
+        if city is None:
+            raise ValidationError(
+                "city cannot be empty"
+            )
+        if pin_code is None:
+            raise ValidationError(
+                "pin code cannot be empty"
+            )
+        if landmark is None:
+            raise ValidationError(
+                "landmark cannot be empty"
+            )
 
-    class Meta:
-        model = Item
-        fields = ["name", "slug", "category","sub_category", "image", "cost_price",
-                  "display_original_selling_price","display_new_selling_price", "description", "warranty", "return_policy","supplier"]
-        widgets = {
-            "name": forms.TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "Enter the product title here..."
-            }),
-            "slug": forms.TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "Enter the unique slug here..."
-            }),
-            "category": forms.Select(attrs={
-                "class": "form-control"
-            }),
-            "sub_category": forms.Select(attrs={
-                "class": "form-control"
-            }),
-            "image": forms.ClearableFileInput(attrs={
-                "class": "form-control"
-            }),
-            "cost_price": forms.NumberInput(attrs={
-                "class": "form-control",
-                "placeholder": "Marked price of the product..."
-            }),
-            "display_original_selling_price": forms.NumberInput(attrs={
-                "class": "form-control",
-                "placeholder": "Selling price of the product..."
-            }),
-            "display_new_selling_price": forms.NumberInput(attrs={
-                "class": "form-control",
-                "placeholder": "Selling price of the product..."
-            }),
-            "description": forms.Textarea(attrs={
-                "class": "form-control",
-                "placeholder": "Description of the product...",
-                "rows": 5
-            }),
-            "warranty": forms.TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "Enter the product warranty here..."
-            }),
-            "return_policy": forms.TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "Enter the product return policy here..."
-            }),
-            "supplier": forms.Select(attrs={
-                "class": "form-control"
-            }),
-
-        }

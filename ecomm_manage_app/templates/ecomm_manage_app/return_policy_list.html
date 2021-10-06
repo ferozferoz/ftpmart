@@ -1,0 +1,35 @@
+{% extends 'ecomm_manage_app/manager_base.html' %}
+{% block title %}Return Policy{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Return Policies</h3><hr>
+            <a class ="btn btn-primary" href="{% url 'ecomm_manage_app:return_policy_create' %}">Add New Return Policy</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Policy</th>
+                        <th>Description</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in all_return_policy %}
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.return_policy_type}}</td>
+                        <td>{{p.return_policy_desc}}</td>
+
+                        <td><a class ="btn btn-primary" href="{% url 'ecomm_manage_app:return_policy_update' p.id %}"> Update </a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

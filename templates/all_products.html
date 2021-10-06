@@ -4,24 +4,25 @@
 
 {% block content %}
 
-<div class = "bread">
- <ul class="breadcrumb">
-    <li><a href="{% url 'ecomm_app:home' %}">Home</a></li>
-    <li>&nbsp /  &nbsp</li>
-     {% for cat in bread_crumb %}
-        <li><a href="{% url 'ecomm_app:category_products' cat.slug %}">{{cat.name}}</a></li>
-        <li>&nbsp /  &nbsp</li>
-     {% endfor %}
-  </ul>
-</div>
+
 <div class = "products">
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+       <li class="breadcrumb-item"><a href="{% url 'ecomm_app:home' %}">Home</a></li>
+
+    {% for cat in bread_crumb %}
+        <li class="breadcrumb-item"><a  href="{% url 'ecomm_app:category_products' cat.slug %}">{{cat.name}}</a></li>
+     {% endfor %}
+  </ol>
+</nav>
+
     <div class="product-items">
         {% for p in category_items %}
         <div class="product">
             <div class="product-content">
                 <div class="product-img">
                     <a href="{% url 'ecomm_app:product_detail' p.slug %}" >
-                    <img src="{{p.image.url}}" alt="product image">
+                    <img src="{{p.image_1.url}}" alt="product image">
                     </a>
                 </div>
                 <div class="product-btns">

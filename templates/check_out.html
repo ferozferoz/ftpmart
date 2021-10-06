@@ -36,7 +36,7 @@
             </table>
         </div>
         <div class="col-md-6" id="div_add">
-            {% if customer.house_no is not None and customer.full_name is not None %}
+            {% if customer_exist == 0 %}
             <h2 class="card-title">Ship to this address</h2>
             <p id="name"><span class="font-weight-bold">Name: </span> {{customer.full_name}}</p>
             <p id="mobile"><span class="font-weight-bold">Mobile: </span> {{customer.mobile}}</p>
@@ -49,7 +49,7 @@
             <a href="{% url 'ecomm_app:ship_order' %}" class="btn btn-primary">Ship to this Address</a>
             {% else %}
             <h3>Checkout Form</h3>
-            <form action="" method="POST">
+            <form action="" method="POST" autocomplete="off">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button class="btn btn-primary">Place Order</button>

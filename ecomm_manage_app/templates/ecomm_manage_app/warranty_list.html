@@ -1,0 +1,35 @@
+{% extends 'ecomm_manage_app/manager_base.html' %}
+{% block title %}Warranty {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Warranty </h3><hr>
+            <a class ="btn btn-primary" href="{% url 'ecomm_manage_app:warranty_create' %}">Add New Warranty</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Warranty</th>
+                        <th>Description</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in all_warranty %}
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.warranty_type}}</td>
+                        <td>{{p.warranty_desc}}</td>
+
+                        <td><a class ="btn btn-primary" href="{% url 'ecomm_manage_app:warranty_update' p.id %}">Update</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

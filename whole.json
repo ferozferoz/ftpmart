@@ -1,0 +1,3357 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-07-25T08:13:25.284Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "inventory",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-07-25T08:13:57.844Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "delivery",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-07-25T08:14:59.450Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "ferozoref@yahoo.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2021-08-01T14:21:21.704Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "3",
+    "object_repr": "feroz.nsit@gmail.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2021-08-01T14:25:17.323Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "ferozoref@yahoo.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2021-08-01T14:26:28.679Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "3",
+    "object_repr": "feroz.nsit@gmail.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2021-08-01T14:26:44.566Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "ferozoref@yahoo.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2021-08-03T14:34:52.792Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "4",
+    "object_repr": "ferozref@yahoo.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2021-08-03T14:35:56.610Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "ferozoref@yahoo.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-08-03T14:36:52.325Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "ferozoref@yahoo.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2021-09-19T07:44:02.742Z",
+    "user": 2,
+    "content_type": 4,
+    "object_id": "11",
+    "object_repr": "",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add cart",
+    "content_type": 7,
+    "codename": "add_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change cart",
+    "content_type": 7,
+    "codename": "change_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete cart",
+    "content_type": 7,
+    "codename": "delete_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view cart",
+    "content_type": 7,
+    "codename": "view_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add customer",
+    "content_type": 8,
+    "codename": "add_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change customer",
+    "content_type": 8,
+    "codename": "change_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete customer",
+    "content_type": 8,
+    "codename": "delete_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view customer",
+    "content_type": 8,
+    "codename": "view_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add order",
+    "content_type": 9,
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change order",
+    "content_type": 9,
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete order",
+    "content_type": 9,
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view order",
+    "content_type": 9,
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add cart product",
+    "content_type": 10,
+    "codename": "add_cartproduct"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change cart product",
+    "content_type": 10,
+    "codename": "change_cartproduct"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete cart product",
+    "content_type": 10,
+    "codename": "delete_cartproduct"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view cart product",
+    "content_type": 10,
+    "codename": "view_cartproduct"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add category",
+    "content_type": 11,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change category",
+    "content_type": 11,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete category",
+    "content_type": 11,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view category",
+    "content_type": 11,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add supplier",
+    "content_type": 12,
+    "codename": "add_supplier"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change supplier",
+    "content_type": 12,
+    "codename": "change_supplier"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete supplier",
+    "content_type": 12,
+    "codename": "delete_supplier"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view supplier",
+    "content_type": 12,
+    "codename": "view_supplier"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add item",
+    "content_type": 13,
+    "codename": "add_item"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change item",
+    "content_type": 13,
+    "codename": "change_item"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete item",
+    "content_type": 13,
+    "codename": "delete_item"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view item",
+    "content_type": 13,
+    "codename": "view_item"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add inventory manager",
+    "content_type": 14,
+    "codename": "add_inventorymanager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change inventory manager",
+    "content_type": 14,
+    "codename": "change_inventorymanager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete inventory manager",
+    "content_type": 14,
+    "codename": "delete_inventorymanager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view inventory manager",
+    "content_type": 14,
+    "codename": "view_inventorymanager"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add new cart",
+    "content_type": 15,
+    "codename": "add_newcart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change new cart",
+    "content_type": 15,
+    "codename": "change_newcart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete new cart",
+    "content_type": 15,
+    "codename": "delete_newcart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view new cart",
+    "content_type": 15,
+    "codename": "view_newcart"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add return policy",
+    "content_type": 16,
+    "codename": "add_returnpolicy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change return policy",
+    "content_type": 16,
+    "codename": "change_returnpolicy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete return policy",
+    "content_type": 16,
+    "codename": "delete_returnpolicy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view return policy",
+    "content_type": 16,
+    "codename": "view_returnpolicy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add warranty",
+    "content_type": 17,
+    "codename": "add_warranty"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change warranty",
+    "content_type": 17,
+    "codename": "change_warranty"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete warranty",
+    "content_type": 17,
+    "codename": "delete_warranty"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view warranty",
+    "content_type": 17,
+    "codename": "view_warranty"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add delivery",
+    "content_type": 18,
+    "codename": "add_delivery"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change delivery",
+    "content_type": 18,
+    "codename": "change_delivery"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete delivery",
+    "content_type": 18,
+    "codename": "delete_delivery"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view delivery",
+    "content_type": 18,
+    "codename": "view_delivery"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "inventory",
+    "permissions": [
+      41,
+      42,
+      43,
+      44,
+      49,
+      50,
+      51,
+      52,
+      45,
+      46,
+      47,
+      48
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "delivery",
+    "permissions": [
+      33,
+      34,
+      35,
+      36
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$AZygzzIFm2hI$tLXgVxg1VVAN6ht0pJZAx1nUYnx6kU0YBZnQY7fiJZk=",
+    "last_login": "2021-09-18T13:14:02.668Z",
+    "is_superuser": false,
+    "username": "ferozoref@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-07-25T05:55:28Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$0aCiy1tmAbb1$zs9G247GQ36m/2IBoygAyGLCMdCDmWZWSAd8xrvijXE=",
+    "last_login": "2021-09-20T06:10:01.287Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "feroz.nsit@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-07-25T06:45:00.879Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$Y6BBumnHIZD2$7EtvRyOC2F7GmtJW2EtyPZYzQCDhUhLLKZLL2K/O+r8=",
+    "last_login": "2021-08-09T02:43:02.217Z",
+    "is_superuser": false,
+    "username": "feroz.nsit@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "feroz.nsit@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-01T14:18:26Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$SNPjM1wWjLEy$aNxZs/gdiAEpdzXpRcVFFyJ+BHlSEaz4DgIZdQ18NeA=",
+    "last_login": "2021-08-08T12:24:06.853Z",
+    "is_superuser": false,
+    "username": "ferozoref1@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref1@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-03T16:08:36.444Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$c1V4qOpcd8pA$RBvpr0W5wFJjq6XNFPZ29udrC3aHVGwnUXEtBroms58=",
+    "last_login": "2021-08-08T10:55:09.634Z",
+    "is_superuser": false,
+    "username": "ferozoref2@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref2@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-03T16:14:02.601Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$Y5NRPWa5doFS$lAS/NEbr+Fgmp99jt0zGj3oYz/+WDmXn9satRFTSxEQ=",
+    "last_login": "2021-08-07T07:22:07.287Z",
+    "is_superuser": false,
+    "username": "ferozoref3@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref3@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-07T07:22:06.909Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$XM7R3HSmOg2T$/bCTD1sAewLPBus8swwQDx3DHv1Sh54I8qzDQ125sDw=",
+    "last_login": "2021-08-08T10:56:35.497Z",
+    "is_superuser": false,
+    "username": "ferozoref10@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref10@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-07T11:23:49.820Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$T0PvdJww4K9U$PcIJhZUxTV7hysain7bkFHVOGBlXVj8KrU97hJcNunI=",
+    "last_login": "2021-08-07T12:27:00.966Z",
+    "is_superuser": false,
+    "username": "ferozoref11@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref11@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-07T12:27:00.792Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$pWQhPAa6QAte$O469aMMbdTkuG/6HCqGe/r7xkNUd4Xp9S/eP3cp2Sv0=",
+    "last_login": "2021-08-08T12:27:08.813Z",
+    "is_superuser": false,
+    "username": "ferozoref12@yahoo.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "ferozoref12@yahoo.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-08-08T12:27:08.582Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-19T07:44:33.929Z",
+    "is_superuser": false,
+    "username": "",
+    "first_name": "feroz",
+    "last_name": "",
+    "email": "salimdhl55@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-19T07:44:33.856Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-19T07:46:47.398Z",
+    "is_superuser": false,
+    "username": "salimdhl56@gmail.com",
+    "first_name": "feroz",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-19T07:46:47.320Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-19T07:48:27.994Z",
+    "is_superuser": false,
+    "username": "salimdhl57@gmail.com",
+    "first_name": "feroz1",
+    "last_name": "",
+    "email": "salimdhl57@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-19T07:48:27.920Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 15,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-20T06:41:11.666Z",
+    "is_superuser": false,
+    "username": "salimdhl@gmail.com",
+    "first_name": "feroz",
+    "last_name": "",
+    "email": "salimdhl@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-20T06:13:23.284Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-20T06:39:41.641Z",
+    "is_superuser": false,
+    "username": "salimdhl62@gmail.com",
+    "first_name": "feroz",
+    "last_name": "",
+    "email": "salimdhl62@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-20T06:39:41.594Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 17,
+  "fields": {
+    "password": "",
+    "last_login": "2021-09-20T06:42:18.911Z",
+    "is_superuser": false,
+    "username": "feroz@gmail.com",
+    "first_name": "khan",
+    "last_name": "",
+    "email": "feroz@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-09-20T06:41:44.706Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "cart"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "customer"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "cartproduct"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "supplier"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "item"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "inventorymanager"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "newcart"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "returnpolicy"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "ecomm_manage_app",
+    "model": "warranty"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 18,
+  "fields": {
+    "app_label": "ecomm_app",
+    "model": "delivery"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "0r6olq0k5606lesznldztvq4dtnp8cce",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAwgDAu3XsGMjNQqRqalHbVeHdt0oVu_3vvbyrRutS09jKnMauLMur0uzHJs7Qd5Ae1-6Rlass8st4VfdCub1Mur-vh_h1U6vVbBysQGU1EBygMWYIMnNlGHDx5TwDsUApb54isjWIEMUAweDbOg3p_AOf5N34:1mKCqF:GajMJx9jYuE485yo9_dBzqG0gMMqPh9H3lW1zklB4FE",
+    "expire_date": "2021-09-12T04:54:47.065Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9kusvon0u5fnax0c5736epfopy07ut73",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAwgDAu3XsGMjNQqRqalHbVeHdt0oVu_3vvbyrRutS09jKnMauLMur0uzHJs7Qd5Ae1-6Rlass8st4VfdCub1Mur-vh_h1U6vVbBysQGU1EBygMWYIMnNlGHDx5TwDsUApb54isjWIEMUAweDbOg3p_AOf5N34:1mEwcN:TjV_3zfpGHRowWiFS-zPzgd4N1-fIBvReaMZwsxqFv8",
+    "expire_date": "2021-08-28T16:34:43.862Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "avlnpporzm4cy7n6097v983r1hy1di8g",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQAP_C2RBgCy0evfsGsrtsbdW0SaEn498NppdeZybzUYxbTXNWV7iohHud0l5k-xMV1IkR8kuWJvITl8eqeV3qNpNuiT5s0fc1y_t2tKfBhGVqWxARch0OYDgG77zN5DJ5SzS6yB6HCA7JBuoD2C6OgEYGb3oAsIHV9wd74DsY:1mBBIV:R89O8NJ0kHBjRX0I8kcVGZ5DJ_PcVOOOY0TkBZr57_o",
+    "expire_date": "2021-08-18T07:26:39.514Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "iz6atfeht8wixj9jo473q3xh8e2qb1pk",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAwgDAu3XsGMjNQqRqalHbVeHdt0oVu_3vvbyrRutS09jKnMauLMur0uzHJs7Qd5Ae1-6Rlass8st4VfdCub1Mur-vh_h1U6vVbBysQGU1EBygMWYIMnNlGHDx5TwDsUApb54isjWIEMUAweDbOg3p_AOf5N34:1mEqJa:cVp1i7SNVPu9LZtLbojtdTJn7G5h2KrV9wNBWLKpOAc",
+    "expire_date": "2021-08-28T09:50:54.425Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jx5qubtb5vkel84j9zxh1puj3pz2qxok",
+  "fields": {
+    "session_data": ".eJxVTksOgjAUvEvXpumf4tK9ZyCvr6-CIiVQVsa7WwwbZjffzIflMrMr88IKdmHvHIaRKm8rKu9gK323rbR0Q6yybM5iAHzRtDvxCdMjc8xTWYbA9wg_3JXfc6TxdmRPAz2sfW1rRzIZSloljU5HoKBRIUhvhZKyMQmiNRScRxuVsQ06EtBKZb0WMexXEZbyP2nM9wfWykNo:1mSD1C:rE5lT1anZlaVx89pYlCHf1ZrDZCUcIE6tzX1ee_5Nis",
+    "expire_date": "2021-10-04T06:43:10.089Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "t5v04b34wnzpjmu3klufqpfnddha4d71",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAwgDAu3XsGMjNQqRqalHbVeHdt0oVu_3vvbyrRutS09jKnMauLMur0uzHJs7Qd5Ae1-6Rlass8st4VfdCub1Mur-vh_h1U6vVbBysQGU1EBygMWYIMnNlGHDx5TwDsUApb54isjWIEMUAweDbOg3p_AOf5N34:1mEwbh:0jtS8HTKsXob0fa9j3qXZeQ3cR1qpJbkiddEVKNGXDQ",
+    "expire_date": "2021-08-28T16:34:01.565Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yv5h5am40mhk9tg2v4xtg70acqrgrjxu",
+  "fields": {
+    "session_data": ".eJxVjkEOwiAQRe_C2hBgCgWX7nuGZgamUjVtQunKeHfFdKHb_15e_lOMuNc87huXcU7iLJw4_W6E8c5LA-mGy3WVcV1qmUk2RR50k8Oa-HE53L9Axi23LDAzmQ49qBicNVYnMomsJppMiBZ9AIOkHfUOdBcmQMXeqh4AtIufaMRSvx_N6w2WIDsX:1mAx6u:I7cjaRsJ_JR2lKOW39hnwFtbWtypSKRfJmTJaoR1WYY",
+    "expire_date": "2021-08-17T16:17:44.295Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "full_name": "  feroz",
+    "house_no": "   None",
+    "street": "  sasa",
+    "city": "  sa",
+    "pin_code": "  110025",
+    "landmark": "   None",
+    "mobile": "  12125552368",
+    "joined_on": "2021-07-25T05:55:28.633Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "full_name": " feroz",
+    "house_no": " sa",
+    "street": "E-11/1 3RD FLOOR ABUL FAZAL ENCLAVE PART-1",
+    "city": "JAMIA NAGAR",
+    "pin_code": "110025",
+    "landmark": " sa",
+    "mobile": "9310588223",
+    "joined_on": "2021-08-01T14:18:27.328Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 5,
+  "fields": {
+    "user": 6,
+    "full_name": " feroz",
+    "house_no": " sa",
+    "street": " sasa",
+    "city": " JAMIA NAGAR",
+    "pin_code": " 110025",
+    "landmark": " sa",
+    "mobile": " ",
+    "joined_on": "2021-08-06T06:15:33.531Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "9310588223",
+    "joined_on": "2021-08-07T07:22:07.183Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "full_name": "feroz",
+    "house_no": "sa",
+    "street": "sasa",
+    "city": "sa",
+    "pin_code": "110025",
+    "landmark": "sa",
+    "mobile": "9971090240",
+    "joined_on": "2021-08-07T11:23:49.942Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "full_name": "feroz",
+    "house_no": "sa",
+    "street": "sasa",
+    "city": "sa",
+    "pin_code": "110025",
+    "landmark": "sa",
+    "mobile": "9971090240",
+    "joined_on": "2021-08-07T12:27:00.906Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "9310588223",
+    "joined_on": "2021-08-08T12:27:08.710Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 11,
+  "fields": {
+    "user": 12,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "feroz",
+    "joined_on": "2021-09-19T07:44:33.882Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 12,
+  "fields": {
+    "user": 13,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "feroz",
+    "joined_on": "2021-09-19T07:46:47.365Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 13,
+  "fields": {
+    "user": 14,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "feroz1",
+    "joined_on": "2021-09-19T07:48:27.957Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 14,
+  "fields": {
+    "user": 15,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "9310588223222",
+    "joined_on": "2021-09-20T06:13:23.297Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 15,
+  "fields": {
+    "user": 16,
+    "full_name": "",
+    "house_no": null,
+    "street": null,
+    "city": null,
+    "pin_code": null,
+    "landmark": null,
+    "mobile": "931058",
+    "joined_on": "2021-09-20T06:39:41.604Z"
+  }
+},
+{
+  "model": "ecomm_app.customer",
+  "pk": 16,
+  "fields": {
+    "user": 17,
+    "full_name": "feroz",
+    "house_no": "sa",
+    "street": "sasa",
+    "city": "sa",
+    "pin_code": "110025",
+    "landmark": "JAMIA NAGAR",
+    "mobile": "9999",
+    "joined_on": "2021-09-20T06:41:44.752Z"
+  }
+},
+{
+  "model": "ecomm_app.cart",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "total": 210,
+    "created_at": "2021-07-25T13:39:22.846Z"
+  }
+},
+{
+  "model": "ecomm_app.cart",
+  "pk": 2,
+  "fields": {
+    "customer": null,
+    "total": 105,
+    "created_at": "2021-08-03T16:17:44.189Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "total": 0,
+    "created_at": "2021-08-04T07:22:08.043Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "total": 0,
+    "created_at": "2021-08-04T07:22:08.043Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 3,
+  "fields": {
+    "user": null,
+    "total": 265,
+    "created_at": "2021-08-04T07:22:08.043Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 4,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-08-06T06:01:22.973Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 5,
+  "fields": {
+    "user": null,
+    "total": 160,
+    "created_at": "2021-08-06T06:19:42.197Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 6,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-08-07T05:40:38.119Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 7,
+  "fields": {
+    "user": 6,
+    "total": 265,
+    "created_at": "2021-08-07T05:43:04.497Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 8,
+  "fields": {
+    "user": 1,
+    "total": 105,
+    "created_at": "2021-08-07T07:21:27.471Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 9,
+  "fields": {
+    "user": 7,
+    "total": 105,
+    "created_at": "2021-08-07T07:23:01.135Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 10,
+  "fields": {
+    "user": 7,
+    "total": 105,
+    "created_at": "2021-08-07T07:27:17.991Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 11,
+  "fields": {
+    "user": 6,
+    "total": 105,
+    "created_at": "2021-08-07T11:21:54.792Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 12,
+  "fields": {
+    "user": 6,
+    "total": 105,
+    "created_at": "2021-08-07T11:22:09.636Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 13,
+  "fields": {
+    "user": 5,
+    "total": 105,
+    "created_at": "2021-08-07T11:22:53.079Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 14,
+  "fields": {
+    "user": 8,
+    "total": 105,
+    "created_at": "2021-08-07T11:23:54.822Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 15,
+  "fields": {
+    "user": 8,
+    "total": 55,
+    "created_at": "2021-08-07T11:39:57.037Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 16,
+  "fields": {
+    "user": 8,
+    "total": 105,
+    "created_at": "2021-08-07T11:46:14.372Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 17,
+  "fields": {
+    "user": 8,
+    "total": 210,
+    "created_at": "2021-08-07T11:49:07.899Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 18,
+  "fields": {
+    "user": 1,
+    "total": 210,
+    "created_at": "2021-08-07T11:50:52.963Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 19,
+  "fields": {
+    "user": 3,
+    "total": 105,
+    "created_at": "2021-08-07T11:59:42.957Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 20,
+  "fields": {
+    "user": 3,
+    "total": 105,
+    "created_at": "2021-08-07T12:06:00.600Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 21,
+  "fields": {
+    "user": 3,
+    "total": 105,
+    "created_at": "2021-08-07T12:22:03.281Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 22,
+  "fields": {
+    "user": 9,
+    "total": 105,
+    "created_at": "2021-08-07T12:27:04.110Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 23,
+  "fields": {
+    "user": 1,
+    "total": 105,
+    "created_at": "2021-08-08T14:07:56.590Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 24,
+  "fields": {
+    "user": 1,
+    "total": 0,
+    "created_at": "2021-08-08T15:37:46.509Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 25,
+  "fields": {
+    "user": 3,
+    "total": 105,
+    "created_at": "2021-08-09T02:56:50.838Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 26,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T03:09:34.314Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 27,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:00:28.373Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 28,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:02:03.359Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 29,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:09:22.625Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 30,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:17:04.742Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 31,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:22:30.925Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 32,
+  "fields": {
+    "user": 3,
+    "total": 160,
+    "created_at": "2021-08-10T04:23:50.820Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 33,
+  "fields": {
+    "user": 1,
+    "total": 105,
+    "created_at": "2021-08-14T07:00:47.328Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 34,
+  "fields": {
+    "user": 1,
+    "total": 105,
+    "created_at": "2021-08-14T07:07:49.306Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 35,
+  "fields": {
+    "user": 1,
+    "total": 105,
+    "created_at": "2021-08-14T07:12:26.023Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 36,
+  "fields": {
+    "user": 1,
+    "total": 12,
+    "created_at": "2021-08-14T09:46:27.977Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 37,
+  "fields": {
+    "user": 1,
+    "total": 55,
+    "created_at": "2021-08-14T09:50:07.626Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 38,
+  "fields": {
+    "user": 1,
+    "total": 160,
+    "created_at": "2021-08-15T05:06:19.582Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 39,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-08-22T04:50:47.707Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 40,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-08-29T04:54:36.229Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 41,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-09-18T13:13:55.193Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 42,
+  "fields": {
+    "user": null,
+    "total": 105,
+    "created_at": "2021-09-19T07:51:29.506Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 43,
+  "fields": {
+    "user": 17,
+    "total": 105,
+    "created_at": "2021-09-20T06:42:25.576Z"
+  }
+},
+{
+  "model": "ecomm_app.newcart",
+  "pk": 44,
+  "fields": {
+    "user": 17,
+    "total": 0,
+    "created_at": "2021-09-20T06:43:10.032Z"
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 1,
+  "fields": {
+    "cart": 1,
+    "product": 1,
+    "rate": 105,
+    "quantity": 2,
+    "subtotal": 210
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 2,
+  "fields": {
+    "cart": 2,
+    "product": 1,
+    "rate": 105,
+    "quantity": 6,
+    "subtotal": 630
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 3,
+  "fields": {
+    "cart": 3,
+    "product": 1,
+    "rate": 105,
+    "quantity": 2,
+    "subtotal": 210
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 4,
+  "fields": {
+    "cart": 3,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 5,
+  "fields": {
+    "cart": 4,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 6,
+  "fields": {
+    "cart": 5,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 7,
+  "fields": {
+    "cart": 5,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 8,
+  "fields": {
+    "cart": 6,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 9,
+  "fields": {
+    "cart": 7,
+    "product": 1,
+    "rate": 105,
+    "quantity": 2,
+    "subtotal": 210
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 10,
+  "fields": {
+    "cart": 7,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 11,
+  "fields": {
+    "cart": 8,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 12,
+  "fields": {
+    "cart": 9,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 13,
+  "fields": {
+    "cart": 10,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 14,
+  "fields": {
+    "cart": 11,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 15,
+  "fields": {
+    "cart": 12,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 16,
+  "fields": {
+    "cart": 13,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 17,
+  "fields": {
+    "cart": 14,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 18,
+  "fields": {
+    "cart": 15,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 19,
+  "fields": {
+    "cart": 16,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 20,
+  "fields": {
+    "cart": 17,
+    "product": 1,
+    "rate": 105,
+    "quantity": 2,
+    "subtotal": 210
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 21,
+  "fields": {
+    "cart": 18,
+    "product": 1,
+    "rate": 105,
+    "quantity": 2,
+    "subtotal": 210
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 22,
+  "fields": {
+    "cart": 19,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 23,
+  "fields": {
+    "cart": 20,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 24,
+  "fields": {
+    "cart": 21,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 25,
+  "fields": {
+    "cart": 22,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 26,
+  "fields": {
+    "cart": 23,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 29,
+  "fields": {
+    "cart": 25,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 30,
+  "fields": {
+    "cart": 26,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 31,
+  "fields": {
+    "cart": 26,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 32,
+  "fields": {
+    "cart": 27,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 33,
+  "fields": {
+    "cart": 27,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 34,
+  "fields": {
+    "cart": 28,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 35,
+  "fields": {
+    "cart": 28,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 36,
+  "fields": {
+    "cart": 29,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 37,
+  "fields": {
+    "cart": 29,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 38,
+  "fields": {
+    "cart": 30,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 39,
+  "fields": {
+    "cart": 30,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 40,
+  "fields": {
+    "cart": 31,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 41,
+  "fields": {
+    "cart": 31,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 42,
+  "fields": {
+    "cart": 32,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 43,
+  "fields": {
+    "cart": 32,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 44,
+  "fields": {
+    "cart": 33,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 45,
+  "fields": {
+    "cart": 34,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 46,
+  "fields": {
+    "cart": 35,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 47,
+  "fields": {
+    "cart": 36,
+    "product": 3,
+    "rate": 12,
+    "quantity": 1,
+    "subtotal": 12
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 48,
+  "fields": {
+    "cart": 37,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 49,
+  "fields": {
+    "cart": 38,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 50,
+  "fields": {
+    "cart": 38,
+    "product": 2,
+    "rate": 55,
+    "quantity": 1,
+    "subtotal": 55
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 51,
+  "fields": {
+    "cart": 39,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 52,
+  "fields": {
+    "cart": 40,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 53,
+  "fields": {
+    "cart": 41,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 54,
+  "fields": {
+    "cart": 42,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.cartproduct",
+  "pk": 55,
+  "fields": {
+    "cart": 43,
+    "product": 1,
+    "rate": 105,
+    "quantity": 1,
+    "subtotal": 105
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 1,
+  "fields": {
+    "cart": 1,
+    "customer": 1,
+    "subtotal": 210,
+    "discount": 0,
+    "total": 210,
+    "order_status": "COMPLETE",
+    "created_at": "2021-07-25T13:39:45.176Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 2,
+  "fields": {
+    "cart": 4,
+    "customer": 5,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-06T06:18:38.134Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 3,
+  "fields": {
+    "cart": 5,
+    "customer": 5,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "Order Received",
+    "created_at": "2021-08-06T06:23:55.539Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 4,
+  "fields": {
+    "cart": 6,
+    "customer": 5,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T05:42:52.240Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 5,
+  "fields": {
+    "cart": 7,
+    "customer": 5,
+    "subtotal": 265,
+    "discount": 0,
+    "total": 265,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T05:45:52.421Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 6,
+  "fields": {
+    "cart": 9,
+    "customer": 6,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T07:23:06.057Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 7,
+  "fields": {
+    "cart": 11,
+    "customer": 5,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T11:22:00.092Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 8,
+  "fields": {
+    "cart": 14,
+    "customer": 7,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T11:39:20.581Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 9,
+  "fields": {
+    "cart": 15,
+    "customer": 7,
+    "subtotal": 55,
+    "discount": 0,
+    "total": 55,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T11:40:03.839Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 10,
+  "fields": {
+    "cart": 16,
+    "customer": 7,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T11:46:23.040Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 11,
+  "fields": {
+    "cart": 17,
+    "customer": 7,
+    "subtotal": 210,
+    "discount": 0,
+    "total": 210,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T11:49:15.663Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 12,
+  "fields": {
+    "cart": 18,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-07T11:50:57.747Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 13,
+  "fields": {
+    "cart": 19,
+    "customer": 2,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-07T12:01:00.726Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 14,
+  "fields": {
+    "cart": 20,
+    "customer": 2,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-07T12:06:07.301Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 15,
+  "fields": {
+    "cart": 21,
+    "customer": 2,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-07T12:22:15.263Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 16,
+  "fields": {
+    "cart": 22,
+    "customer": 8,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "Order Received",
+    "created_at": "2021-08-07T12:27:15.626Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 17,
+  "fields": {
+    "cart": 23,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-08T14:12:45.614Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 18,
+  "fields": {
+    "cart": 24,
+    "customer": 1,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-08T15:37:53.136Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 19,
+  "fields": {
+    "cart": 25,
+    "customer": 2,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "ORDER_CANCELLED",
+    "created_at": "2021-08-09T02:56:55.929Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 20,
+  "fields": {
+    "cart": 26,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T03:34:07.162Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 21,
+  "fields": {
+    "cart": 27,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T04:00:34.949Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 22,
+  "fields": {
+    "cart": 28,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T04:02:12.849Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 23,
+  "fields": {
+    "cart": 29,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T04:09:32.612Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 24,
+  "fields": {
+    "cart": 30,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T04:18:33.028Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 25,
+  "fields": {
+    "cart": 31,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "ORDER_RECEIVED",
+    "created_at": "2021-08-10T04:22:40.387Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 26,
+  "fields": {
+    "cart": 32,
+    "customer": 2,
+    "subtotal": 160,
+    "discount": 0,
+    "total": 160,
+    "order_status": "CANCELLED",
+    "created_at": "2021-08-10T04:24:03.224Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 27,
+  "fields": {
+    "cart": 33,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-08-14T07:06:09.346Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 28,
+  "fields": {
+    "cart": 34,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-08-14T07:07:53.925Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 29,
+  "fields": {
+    "cart": 35,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-08-14T07:12:31.030Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 30,
+  "fields": {
+    "cart": 36,
+    "customer": 1,
+    "subtotal": 12,
+    "discount": 0,
+    "total": 12,
+    "order_status": "CREATED",
+    "created_at": "2021-08-14T09:46:43.100Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 31,
+  "fields": {
+    "cart": 37,
+    "customer": 1,
+    "subtotal": 55,
+    "discount": 0,
+    "total": 55,
+    "order_status": "COMPLETE",
+    "created_at": "2021-08-14T09:50:20.030Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 32,
+  "fields": {
+    "cart": 39,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-08-29T04:26:39.835Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 33,
+  "fields": {
+    "cart": 40,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-08-29T04:54:43.864Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 34,
+  "fields": {
+    "cart": 41,
+    "customer": 1,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-09-18T13:14:13.697Z"
+  }
+},
+{
+  "model": "ecomm_app.order",
+  "pk": 35,
+  "fields": {
+    "cart": 43,
+    "customer": 16,
+    "subtotal": 105,
+    "discount": 0,
+    "total": 105,
+    "order_status": "CREATED",
+    "created_at": "2021-09-20T06:42:44.685Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 1,
+  "fields": {
+    "order": 29,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T07:12:31.111Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 2,
+  "fields": {
+    "order": 29,
+    "delivery_status": "PICKED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:44:59.727Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 3,
+  "fields": {
+    "order": 29,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:45:15.246Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 4,
+  "fields": {
+    "order": 29,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:45:25.256Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 5,
+  "fields": {
+    "order": 29,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:46:01.444Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 6,
+  "fields": {
+    "order": 30,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:46:43.136Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 7,
+  "fields": {
+    "order": 30,
+    "delivery_status": "PICKED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:47:50.385Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 8,
+  "fields": {
+    "order": 30,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:48:13.742Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 9,
+  "fields": {
+    "order": 31,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:50:20.105Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 10,
+  "fields": {
+    "order": 31,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-14T09:51:00.172Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 11,
+  "fields": {
+    "order": 32,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:26:39.892Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 12,
+  "fields": {
+    "order": 1,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:27:56.358Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 13,
+  "fields": {
+    "order": 1,
+    "delivery_status": "ABORTED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:28:01.679Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 14,
+  "fields": {
+    "order": 1,
+    "delivery_status": "DELIVERED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:28:05.929Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 15,
+  "fields": {
+    "order": 1,
+    "delivery_status": "ABORTED",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:28:19.805Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 16,
+  "fields": {
+    "order": 33,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-08-29T04:54:43.881Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 17,
+  "fields": {
+    "order": 34,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-09-18T13:14:13.710Z"
+  }
+},
+{
+  "model": "ecomm_app.delivery",
+  "pk": 18,
+  "fields": {
+    "order": 35,
+    "delivery_status": "PROCESSING",
+    "delivery_manager": 1,
+    "update_at": "2021-09-20T06:42:44.704Z"
+  }
+},
+{
+  "model": "ecomm_manage_app.warranty",
+  "pk": 1,
+  "fields": {
+    "warranty_type": "NA",
+    "warranty_desc": "Not applicable"
+  }
+},
+{
+  "model": "ecomm_manage_app.returnpolicy",
+  "pk": 1,
+  "fields": {
+    "return_policy_type": "NA",
+    "return_policy_desc": "not applicable"
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 1,
+  "fields": {
+    "name": "Grocery",
+    "slug": "grocery",
+    "parent": null
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 2,
+  "fields": {
+    "name": "Electronics",
+    "slug": "electronics",
+    "parent": null
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 3,
+  "fields": {
+    "name": "Apparel",
+    "slug": "apparel",
+    "parent": null
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 4,
+  "fields": {
+    "name": "Home Appliances",
+    "slug": "home-applicances",
+    "parent": null
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 5,
+  "fields": {
+    "name": "Vegatables",
+    "slug": "vegatables",
+    "parent": 1
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 6,
+  "fields": {
+    "name": "Meat",
+    "slug": "meat",
+    "parent": 1
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 7,
+  "fields": {
+    "name": "Cereals",
+    "slug": "cereals",
+    "parent": 1
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 8,
+  "fields": {
+    "name": "Oils",
+    "slug": "oils",
+    "parent": 1
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 9,
+  "fields": {
+    "name": "Mobiles",
+    "slug": "mobile",
+    "parent": 2
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 10,
+  "fields": {
+    "name": "Shoes",
+    "slug": "shoes",
+    "parent": 3
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 11,
+  "fields": {
+    "name": "Men's apparel",
+    "slug": "men-apparel",
+    "parent": 3
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 12,
+  "fields": {
+    "name": "Travel",
+    "slug": "travel",
+    "parent": null
+  }
+},
+{
+  "model": "ecomm_manage_app.category",
+  "pk": 13,
+  "fields": {
+    "name": "Hotels",
+    "slug": "hotels",
+    "parent": 12
+  }
+},
+{
+  "model": "ecomm_manage_app.supplier",
+  "pk": 1,
+  "fields": {
+    "name": "pammu",
+    "slug": "pammu_1",
+    "address": "kheldar",
+    "home_phone": "93105",
+    "office_phone": "93105",
+    "joined_on": "2021-08-01T15:59:40.682Z"
+  }
+},
+{
+  "model": "ecomm_manage_app.supplier",
+  "pk": 2,
+  "fields": {
+    "name": "umar",
+    "slug": "umar",
+    "address": "kheldar",
+    "home_phone": "98888888",
+    "office_phone": "8888888",
+    "joined_on": "2021-08-01T15:59:40.682Z"
+  }
+},
+{
+  "model": "ecomm_manage_app.item",
+  "pk": 1,
+  "fields": {
+    "name": "atta",
+    "slug": "atta_3",
+    "category": 1,
+    "sub_category": 7,
+    "supplier": 1,
+    "sell_quantity": "",
+    "cost_price": "100.00",
+    "display_original_selling_price": "110.00",
+    "display_new_selling_price": "105.00",
+    "description": "atta",
+    "warranty": 1,
+    "return_policy": 1,
+    "image_1": "products/images/ashirwad-wheat_Flour.jpg",
+    "image_2": "",
+    "image_3": "",
+    "image_4": "",
+    "image_5": "",
+    "view_count": 25
+  }
+},
+{
+  "model": "ecomm_manage_app.item",
+  "pk": 2,
+  "fields": {
+    "name": "besan",
+    "slug": "besan_2",
+    "category": 1,
+    "sub_category": 7,
+    "supplier": 1,
+    "sell_quantity": "",
+    "cost_price": "51.00",
+    "display_original_selling_price": "60.00",
+    "display_new_selling_price": "55.00",
+    "description": "besan",
+    "warranty": 1,
+    "return_policy": 1,
+    "image_1": "products/images/ashirwad_besan1kg.jpg",
+    "image_2": "",
+    "image_3": "",
+    "image_4": "",
+    "image_5": "",
+    "view_count": 2
+  }
+},
+{
+  "model": "ecomm_manage_app.item",
+  "pk": 3,
+  "fields": {
+    "name": "Maida 1Kg",
+    "slug": "maida-1",
+    "category": 1,
+    "sub_category": 7,
+    "supplier": 1,
+    "sell_quantity": "",
+    "cost_price": "5.00",
+    "display_original_selling_price": "15.00",
+    "display_new_selling_price": "12.00",
+    "description": "Maida flour",
+    "warranty": 1,
+    "return_policy": 1,
+    "image_1": "products/images/ashirwad-maida_Flour.jpg",
+    "image_2": "",
+    "image_3": "",
+    "image_4": "",
+    "image_5": "",
+    "view_count": 0
+  }
+}
+]

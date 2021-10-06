@@ -11,7 +11,7 @@
             {% for result in results %}
             <div class="row">
                 <div class="col-md-3">
-                    <img src="{{result.image.url}}" class="img-fluid" alt="">
+                    <img src="{{result.image_1.url}}" class="img-fluid" alt="">
                 </div>
                 <div class="col-md-9">
                     <h4><a href="{% url 'ecomm_app:product_detail' result.slug %}">{{result.title}}</a></h4>

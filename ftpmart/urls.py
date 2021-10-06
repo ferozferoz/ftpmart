@@ -19,10 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("ecomm_app.urls")),
     path("", include("user_management_app.urls")),
+    path("", include("ecomm_manage_app.urls")),
 ]
 
 

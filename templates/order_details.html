@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} My cart{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+        {% if cart.cartproduct_set.all %}
+            <h4>Order details </h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cp in cart.cartproduct_set.all %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="{{cp.product.image_1.url}}" alt="" width="25%" ></img></td>
+                        <td>{{cp.product.name}}</td>
+                        <td>{{cp.rate}}</td>
+                        <td>{{cp.quantity}}</td>
+                        <td>{{cp.subtotal}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th colspan="4" class="text-right">Total</th>
+                        <th>Rs. {{cart.total}}</th>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+
+    </div>
+    {% if order.order_status == 'ORDER_CANCELLED'%}
+        <td><a href="{% url 'ecomm_app:cancel_order' order.id %}" class="btn btn-primary disabled" >Cancel</a></td>
+
+    {% else %}
+        <td><a href="{% url 'ecomm_app:cancel_order' order.id %}" class="btn btn-primary">Cancel</a></td>
+
+    {% endif %}
+</div>
+{% endblock %}

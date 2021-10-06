@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% extends 'ecomm_manage_app/manager_base.html' %}
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>All Product list</h3><hr>
+            <a class ="btn btn-primary" href="{% url 'ecomm_manage_app:category_create' %}">Add New Category</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Parent Category Name</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in all_categories %}
+                    <tr>
+                        <td>{{c.name}}</td>
+                        <td>{{c.parent}}</td>
+                    <td><a class ="btn btn-primary" href="{% url 'ecomm_manage_app:category_update' c.slug %}">update</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</title>
+</head>
+<body>
+
+</body>
+</html>

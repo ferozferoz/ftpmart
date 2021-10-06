@@ -2,4 +2,4 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 admin.site.register(
-    [Category, Item, Cart, CartProduct, Order, ProductImage, Admin,Supplier])
+    [ Cart, CartProduct, Order, Delivery,Customer,NewCart])

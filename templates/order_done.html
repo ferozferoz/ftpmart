@@ -36,7 +36,7 @@
                     {% for cp in cart_products.all %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td><img src="{{cp.product.image.url}}" alt="" max-width="100%" ></img></td>          
+                        <td><img src="{{cp.product.image_1.url}}" alt="" max-width="100%" ></img></td>
                         <td>{{cp.product.title}}</td>
                         <td>{{cp.rate}}</td>
                         <td>{{cp.quantity}}</td>

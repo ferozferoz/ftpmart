@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ecomm_app',
-    'inventory_management_app',
+    'ecomm_manage_app',
     'user_management_app',
     'mathfilters'
 ]
@@ -86,9 +86,18 @@ WSGI_APPLICATION = 'ftpmart.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ftpmart',
+        'USER' : 'postgres',
+        'PASSWORD' : 'P@ssword',
+        'HOST' : 'localhost',
+        'PORT' : '5432',
     }
 }
 
@@ -144,6 +153,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "hasif5158@gmail.com"
-EMAIL_HOST_PASSWORD = "Corona@123"
+EMAIL_HOST_USER = "post.message883@gmail.com"
+EMAIL_HOST_PASSWORD = "M00merang@123"
 

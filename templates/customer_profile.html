@@ -12,7 +12,6 @@
         <li class="nav-item">
             <a class="nav-link" href="#menu1">My Orders</a>
         </li>
-
     </ul>
 
     <!-- Tab panes -->
@@ -42,6 +41,7 @@
                     <th>Order Time</th>
                     <th>Delivery Time</th>
 
+
                 </tr>
                 </thead>
                 <tbody>
@@ -49,11 +49,14 @@
                 {% for order in order_items %}
                 <tr>
 
-                    <td>{{order.id}}</td>
+                    <td><a href="{% url 'ecomm_app:order_details' order.id %}" >{{order.id}}</a></td>
                     <td>{{order.order_status}}</td>
                     <td>{{order.total}}</td>
                     <td>{{order.created_at}}</td>
                     <td>{{order.created_at}}</td>
+                    <td><a href="{% url 'ecomm_app:order_details' order.id %}" class="btn btn-primary" > Order details</a></td>
+
+
 
                 </tr>
                 {% endfor %}
@@ -62,7 +65,6 @@
         </div>
     </div>
 </div>
-
 <script>
 var profileInfo;
 
@@ -72,52 +74,44 @@ $(document).ready(function(){
   });
 });
 
-function editProfile(){
-
+    function editProfile(){
     profileInfo = document.getElementById("home").innerHTML;
-
-    document.getElementById("home").innerHTML =
-    `<div id="home" class="container tab-pane active">
+    document.getElementById("home").innerHTML = `<div id="home" class="container tab-pane active">
     <form id="post-form">
     {% csrf_token %}
     <div class="form-group col-md-4">
     <label>Name</label>
-	<input type="text" id="form-name" class="form-control" value="${document.getElementById('name').childNodes[1].data}" ><br>
+	<input type="text" autocomplete="off" id="form-name" class="form-control" value="${document.getElementById('name').childNodes[1].data}" ><br>
 	</div>
 	<div class="form-group col-md-4" >
     <label>Mobile</label>
-	<input type="text" id="form-mobile" class="form-control" value="${document.getElementById('mobile').childNodes[1].data}"><br>
+	<input type="text" autocomplete="off" id="form-mobile" class="form-control" value="${document.getElementById('mobile').childNodes[1].data}"><br>
 	</div>
 	<div class="form-group col-md-4">
     <label>House No.</label>
-	<input type="text" id="form-houseNo" class="form-control" value="${document.getElementById('houseNo').childNodes[1].data}" ><br>
+	<input type="text" autocomplete="off" id="form-houseNo" class="form-control" value="${document.getElementById('houseNo').childNodes[1].data}" ><br>
 	</div>
 	<div class="form-group col-md-4">
     <label>Street</label>
-	<input type="text" id="form-street" class="form-control" value="${document.getElementById('street').childNodes[1].data}" ><br>
+	<input type="text" autocomplete="off" id="form-street" class="form-control" value="${document.getElementById('street').childNodes[1].data}" ><br>
 	</div>
 	<div class="form-group col-md-4">
     <label>city</label>
-	<input type="text" id="form-city" class="form-control" value="${document.getElementById('city').childNodes[1].data}"><br>
+	<input type="text" autocomplete="off" id="form-city" class="form-control" value="${document.getElementById('city').childNodes[1].data}"><br>
 	</div>
 	<div class="form-group col-md-4">
     <label>pin code</label>
-	<input type="text" id="form-pin" class="form-control" value="${document.getElementById('pin').childNodes[1].data}"><br>
+	<input type="text" autocomplete="off" id="form-pin" class="form-control" value="${document.getElementById('pin').childNodes[1].data}"><br>
 	</div>
 	<div class="form-group col-md-4">
     <label>land mark</label>
-	<input type="text" id="form-landmark" class="form-control" value="${document.getElementById('landmark').childNodes[1].data}"><br>
+	<input type="text" autocomplete="off" id="form-landmark" class="form-control" value="${document.getElementById('landmark').childNodes[1].data}"><br>
 	<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 	<button type="submit" class="btn btn-primary" onclick="cancelEditForm()">Cancel</button>
 	</div>`;
 
 }
-
-function cancelEditForm(){
-    document.getElementById("home").innerHTML = profileInfo;
-}
-
 
 $(document).on('submit','#post-form',function(e){
     e.preventDefault();
@@ -132,7 +126,7 @@ $(document).on('submit','#post-form',function(e){
             city:$('#form-city').val(),
             pin:$('#form-pin').val(),
             landmark:$('#form-landmark').val(),
-            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            csrfmiddlewaretoken:'{{ csrf_token }}' ,
 
         },
         success: function(data){
@@ -143,6 +137,6 @@ $(document).on('submit','#post-form',function(e){
 
     })
 })
-</script>
 
+</script>>
 {% endblock %}

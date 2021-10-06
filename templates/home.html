@@ -2,7 +2,7 @@
 <title>{% block title %}Home{% endblock %}</title></head>
 
 {% block content %}
-
+{% load mathfilters %}
 <div class = "products">
     <div class="product-items">
         {% for p in all_items %}
@@ -11,7 +11,7 @@
                  <a href="{% url 'ecomm_app:product_detail' p.slug %}" >
                 <div class="product-img">
 
-                    <img src="{{p.image.url}}" alt="product image">
+                    <img src="{{p.image_1.url}}" alt="product image">
 
                 </div>
                      </a>
@@ -42,7 +42,10 @@
                 <p class="product-price">Rs. {{p.display_new_selling_price}}</p>
             </div>
             <div class="off-info">
-                <h2 class="sm-title">Offer</h2>
+                {% with numerator=p.display_original_selling_price|sub:p.display_new_selling_price|mul:100 %}
+
+                <h2 class="sm-title">{{numerator |div:p.display_original_selling_price|floatformat:0 }} % off</h2>
+                {% endwith%}
             </div>
         </div>
 
