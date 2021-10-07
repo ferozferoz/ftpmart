@@ -1,1 +1,1 @@
-web: gunicorn ftpmart.wsgi
+web: gunicorn ftpmart.wsgi --log-file -

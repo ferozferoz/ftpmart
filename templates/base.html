@@ -65,7 +65,7 @@
                     <ul class="dropdown-menu">
                         {% if request.user.is_authenticated %}
                         {% if is_manager %}
-                        <li><a class="dropdown-item" href="{% url 'ecomm_manage_app:manager_login' %}">Manager App</a>
+                        <li><a class="dropdown-item" href="{% url 'ecomm_manage_app:manager_home' %}">Manager App</a>
                         </li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'ecomm_app:customer_profile' %}">My Profile</a></li>
@@ -91,8 +91,9 @@
 {% if messages %}
 {% for msg in messages %}
 <div class="alert alert-info alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     {{msg.message}}
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
 </div>
 {% endfor %}
 {% endif %}
