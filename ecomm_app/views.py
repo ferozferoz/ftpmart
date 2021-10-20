@@ -13,7 +13,6 @@ from django.template.loader import render_to_string
 
 """Mixin class that contain common cart objects"""
 
-
 class CartNo(object):
 
     def get_context_data(self, **kwargs):
@@ -27,7 +26,7 @@ class CartNo(object):
         context['cart'] = cart
         context['categories'] = Category.objects.all()
         context['category_nav'] = Category.objects.filter(parent_id=None)
-        context['all_items'] = Item.objects.all()
+        context['all_items'] = Item.objects.filter(is_active = True)
         context['is_manager'] = self.request.user.groups.filter(Q(name='inventory') | Q(name='delivery')).exists()
         return context
 
@@ -35,8 +34,8 @@ class CartNo(object):
 """Function return Main page"""
 
 
-class HomeView( CartNo, TemplateView):
-    template_name = "home.html"
+class HomeView(CartNo, TemplateView):
+    template_name = "ecomm_app/home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,7 +43,7 @@ class HomeView( CartNo, TemplateView):
 
 
 class CategoryProductsView(CartNo, TemplateView):
-    template_name = "all_products.html"
+    template_name = "ecomm_app/all_products.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,7 +68,7 @@ class CategoryProductsView(CartNo, TemplateView):
 
 
 class ProductDetailView(CartNo, TemplateView):
-    template_name = "product_detail.html"
+    template_name = "ecomm_app/product_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -133,7 +132,7 @@ class AddToCartView(CartNo, View):
 
 
 class MyCartView(CartNo,  TemplateView):
-    template_name = "my_cart.html"
+    template_name = "ecomm_app/my_cart.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -188,7 +187,7 @@ class ShipOrderView(CartNo,View):
                                     delivery_status='PROCESSING',
                                     delivery_manager=User.objects.get(pk=1))
 
-            html_message = render_to_string('email_order_content.html', {'cart': cart_obj})
+            html_message = render_to_string('ecomm_app/email_order_content.html', {'cart': cart_obj})
 
             subject = 'Your Order placed with city mart. Order # - ' + str(order.id)
             message = f'Hi, thank you for placing an order.\n'
@@ -202,7 +201,7 @@ class ShipOrderView(CartNo,View):
 
 
 class CheckoutView(CartNo, CreateView):
-    template_name = "check_out.html"
+    template_name = "ecomm_app/check_out.html"
     form_class = CheckoutForm
     success_url = reverse_lazy("ecomm_app:order_placed")
     context = {}
@@ -260,7 +259,7 @@ class CheckoutView(CartNo, CreateView):
 
 
 class OrderPlacedView(CartNo, TemplateView):
-    template_name = "order_done.html"
+    template_name = "ecomm_app/order_done.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -275,7 +274,7 @@ class OrderPlacedView(CartNo, TemplateView):
 
 
 class SearchView(TemplateView):
-    template_name = "search.html"
+    template_name = "ecomm_app/search.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -289,7 +288,7 @@ class SearchView(TemplateView):
 
 class CancelOrderView(CartNo,TemplateView):
 
-    template_name = 'home.html'
+    template_name = 'ecomm_app/home.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -332,7 +331,7 @@ def editCustomerProfileView(request):
 
 
 class CustomerProfileView(CartNo, TemplateView):
-    template_name = "customer_profile.html"
+    template_name = "ecomm_app/customer_profile.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -353,7 +352,7 @@ class CustomerProfileView(CartNo, TemplateView):
 
 
 class OrderDetailView(CartNo, TemplateView):
-    template_name = "order_details.html"
+    template_name = "ecomm_app/order_details.html"
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:

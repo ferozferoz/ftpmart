@@ -11,7 +11,6 @@ class WarrantyForm(forms.ModelForm):
         model = Warranty
         fields = ["warranty_type", "warranty_desc"]
         widgets = {
-
                 "warranty_type": forms.TextInput(attrs={'class':'form-control'}),
                 "warranty_desc": forms.TextInput(attrs={'class':'form-control'}),
         }
@@ -20,11 +19,8 @@ class WarrantyForm(forms.ModelForm):
 class ReturnPolicyForm(forms.ModelForm):
     class Meta:
         model = ReturnPolicy
-
         fields = ["return_policy_type", "return_policy_desc"]
-
         widgets = {
-
             "return_policy_type": forms.TextInput(attrs={'class': 'form-control'}),
             "return_policy_desc": forms.TextInput(attrs={'class': 'form-control'}),
 
@@ -34,35 +30,25 @@ class ReturnPolicyForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
 
     class Meta:
-
         model = Category
-
-        fields = ["name", "slug", "parent"]
-
-        widgets={
-
+        fields = ["name", "parent"]
+        widgets = {
                 "name": forms.TextInput(attrs={'class':'form-control'}),
-                "slug": forms.TextInput(attrs={'class':'form-control'}),
                 "parent": forms.Select(attrs={'class':'form-control'}),
-
-
         }
+
 
 class SupplierForm(forms.ModelForm):
 
     class Meta:
-
         model = Supplier
-
-        fields = ["name", "slug", "address", "home_phone", "office_phone"]
+        fields = ["name", "address", "home_phone", "office_phone"]
         widgets = {
 
                 "name": forms.TextInput(attrs={'class':'form-control'}),
-                "slug": forms.TextInput(attrs={'class':'form-control'}),
                 "address": forms.TextInput(attrs={'class': 'form-control'}),
                 "home_phone": forms.TextInput(attrs={'class': 'form-control'}),
                 "office_phone": forms.TextInput(attrs={'class': 'form-control'}),
-
         }
 
 
@@ -70,19 +56,14 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ["name", "category","sub_category", "image_1", "image_2", "image_3", "image_4", "image_5", "cost_price" ,
-                  "display_original_selling_price","display_new_selling_price", "description", "warranty",
-                  "return_policy", "supplier"]
+        fields = ["name", "category","sub_category", "image_1", "image_2", "image_3", "image_4", "image_5",
+                  "cost_price", "display_original_selling_price", "display_new_selling_price", "description",
+                  "warranty", "return_policy", "supplier", "is_active"]
         widgets = {
             "name": forms.TextInput(attrs={
                 "class": "form-control",
-                "autocomplete":"off",
-                "placeholder": "Enter the product title here..."
-            }),
-            "slug": forms.TextInput(attrs={
-                "class": "form-control",
                 "autocomplete": "off",
-                "placeholder": "Enter the unique slug here..."
+                "placeholder":  "Enter the product title here..."
             }),
             "category": forms.Select(attrs={
                 "class": "form-control"
@@ -132,14 +113,13 @@ class ProductForm(forms.ModelForm):
                 "class": "form-control"
 
             }),
-
             "return_policy": forms.Select(attrs={
                 "class": "form-control"
 
             }),
-
             "supplier": forms.Select(attrs={
                 "class": "form-control"
             }),
+
 
         }

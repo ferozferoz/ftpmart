@@ -1,6 +1,9 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
+
+
 
 # Create your models here.
 
@@ -25,7 +28,7 @@ class ReturnPolicy(models.Model):
 class Category(models.Model):
 
     name = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(null=True, blank=True, unique=True)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child', on_delete=models.CASCADE)
 
     def __breadcrumb__(self):
@@ -40,6 +43,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+
 
 class Supplier(models.Model):
     name = models.CharField(max_length=200)
@@ -51,6 +59,11 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
 
 class Item(models.Model):
@@ -68,18 +81,26 @@ class Item(models.Model):
     warranty = models.ForeignKey(Warranty, on_delete=models.DO_NOTHING)
     return_policy = models.ForeignKey(ReturnPolicy, on_delete=models.DO_NOTHING)
 
-    image_1 = models.ImageField(upload_to="products/images/")
-    image_2 = models.ImageField(upload_to="products/images/",null=True,blank=True)
-    image_3 = models.ImageField(upload_to="products/images/",null=True,blank=True)
-    image_4 = models.ImageField(upload_to="products/images/",null=True,blank=True)
-    image_5 = models.ImageField(upload_to="products/images/",null=True,blank=True)
+    image_1 = models.FileField()
+    image_2 = models.FileField(null=True,blank=True)
+    image_3 = models.FileField(null=True,blank=True)
+    image_4 = models.FileField(null=True,blank=True)
+    image_5 = models.FileField(null=True,blank=True)
+
     view_count = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+
 
 class InventoryManager(models.Model):
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="admins")

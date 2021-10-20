@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db_1:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=ftpmart
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=P@ssword
+      - PGPORT=5432
+  web_1:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db_1

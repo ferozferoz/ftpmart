@@ -15,7 +15,7 @@ import http
 
 class RegistrationView(FormView):
 
-    template_name = "customer_registration.html"
+    template_name = "user_management_app/customer_registration.html"
     form_class = RegistrationForm
     success_url = reverse_lazy("ecomm_app:home")
 
@@ -48,7 +48,7 @@ class LogoutView(View):
 
 class LoginView(FormView):
 
-    template_name = "customer_login.html"
+    template_name = "user_management_app/customer_login.html"
     form_class = LoginForm
     success_url = reverse_lazy("ecomm_app:home")
 
@@ -72,7 +72,7 @@ class LoginView(FormView):
 
 class PasswordForgotView(FormView):
 
-    template_name = "forgot_password.html"
+    template_name = "user_management_app/forgot_password.html"
     form_class = PasswordForgotForm
     success_url = "/forgot-password/?m=s"
 
@@ -121,7 +121,7 @@ def register(request):
                 request.session['otp'] = otp
                 return redirect("user_management_app:register_otp")
 
-    return render(request,'customer_registration.html')
+    return render(request,'user_management_app/customer_registration.html')
 
 def register_otp(request):
 
@@ -137,7 +137,7 @@ def register_otp(request):
             login(request, user)
             return redirect("ecomm_app:home")
 
-    return render(request, 'otp.html', context)
+    return render(request, 'user_management_app/otp.html', context)
 
 
 def send_otp(mobile , otp):
@@ -170,9 +170,9 @@ def login_otp(request):
         else:
 
             context = {'message': 'Wrong OTP', 'class': 'danger', 'mobile': request.session['mobile']}
-            return render(request, 'login_otp.html', context)
+            return render(request, 'user_management_app/login_otp.html', context)
 
-    return render(request, 'login_otp.html',context={'otp':request.session['otp']})
+    return render(request, 'user_management_app/login_otp.html',context={'otp':request.session['otp']})
 
 
 def login_attempt(request):
@@ -183,11 +183,11 @@ def login_attempt(request):
 
         if user is None:
             context = {'message': 'User not found', 'class': 'danger'}
-            return render(request, 'login.html', context)
+            return render(request, 'user_management_app/login.html', context)
         otp = str(random.randint(1000, 9999))
         request.session['otp'] = otp
         #send_otp(mobile, otp)
         request.session['mobile'] = mobile
         return redirect('user_management_app:login_otp')
 
-    return render(request, 'login.html')
+    return render(request, 'user_management_app/login.html')

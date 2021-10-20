@@ -1,0 +1,142 @@
+{% extends 'ecomm_app/base.html' %}
+{% block title %}My Profile{% endblock %}
+{% block content %}
+<div class="container mt-3">
+    <h2>My Profile</h2>
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#home">My Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#menu1">My Orders</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+            <h2 class="card-title">Detail Information</h2>
+            <p id="name"><span class="font-weight-bold">Name: </span> {{customer.full_name}}</p>
+            <p id="username"><span class="font-weight-bold">Username: </span> {{customer.user.username}}</p>
+            <p id="email"><span class="font-weight-bold">Email: </span> {{customer.user.email}}</p>
+            <p id="mobile"><span class="font-weight-bold">Mobile: </span> {{customer.mobile}}</p>
+            <p id="houseNo"><span class="font-weight-bold">House No: </span> {{customer.house_no}}</p>
+            <p id="street"><span class="font-weight-bold">Street: </span> {{customer.street}}</p>
+            <p id="city"><span class="font-weight-bold">City: </span> {{customer.city}}</p>
+            <p id="pin"><span class="font-weight-bold">Pin Code: </span> {{customer.pin_code}}</p>
+            <p id="landmark"><span class="font-weight-bold">Landmark: </span> {{customer.landmark}}</p>
+            <p><span class="font-weight-bold">Joined on: </span> {{customer.joined_on}}</p>
+            <a onclick="editProfile()" class="btn btn-primary">Edit</a>
+        </div>
+
+        <div id="menu1" class="container tab-pane fade"><br>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Order #</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Order Time</th>
+                    <th>Delivery Time</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for order in order_items %}
+                <tr>
+
+                    <td><a href="{% url 'ecomm_app:order_details' order.id %}" >{{order.id}}</a></td>
+                    <td>{{order.order_status}}</td>
+                    <td>{{order.total}}</td>
+                    <td>{{order.created_at}}</td>
+                    <td>{{order.created_at}}</td>
+                    <td><a href="{% url 'ecomm_app:order_details' order.id %}" class="btn btn-primary" > Order details</a></td>
+
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+var profileInfo;
+
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+});
+
+    function editProfile(){
+    profileInfo = document.getElementById("home").innerHTML;
+    document.getElementById("home").innerHTML = `<div id="home" class="container tab-pane active">
+    <form id="post-form">
+    {% csrf_token %}
+    <div class="form-group col-md-4">
+    <label>Name</label>
+	<input type="text" autocomplete="off" id="form-name" class="form-control" value="${document.getElementById('name').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4" >
+    <label>Mobile</label>
+	<input type="text" autocomplete="off" id="form-mobile" class="form-control" value="${document.getElementById('mobile').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>House No.</label>
+	<input type="text" autocomplete="off" id="form-houseNo" class="form-control" value="${document.getElementById('houseNo').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>Street</label>
+	<input type="text" autocomplete="off" id="form-street" class="form-control" value="${document.getElementById('street').childNodes[1].data}" ><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>city</label>
+	<input type="text" autocomplete="off" id="form-city" class="form-control" value="${document.getElementById('city').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>pin code</label>
+	<input type="text" autocomplete="off" id="form-pin" class="form-control" value="${document.getElementById('pin').childNodes[1].data}"><br>
+	</div>
+	<div class="form-group col-md-4">
+    <label>land mark</label>
+	<input type="text" autocomplete="off" id="form-landmark" class="form-control" value="${document.getElementById('landmark').childNodes[1].data}"><br>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	<button type="submit" class="btn btn-primary" onclick="cancelEditForm()">Cancel</button>
+	</div>`;
+
+}
+
+$(document).on('submit','#post-form',function(e){
+    e.preventDefault();
+    $.ajax({
+        type:'POST',
+        url:'/profile_edit',
+        data:{
+            name:$('#form-name').val(),
+            mobile:$('#form-mobile').val(),
+            houseNo:$('#form-houseNo').val(),
+            street:$('#form-street').val(),
+            city:$('#form-city').val(),
+            pin:$('#form-pin').val(),
+            landmark:$('#form-landmark').val(),
+            csrfmiddlewaretoken:'{{ csrf_token }}' ,
+
+        },
+        success: function(data){
+            $('#home').load(" #home");
+
+        }
+
+
+    })
+})
+
+</script>>
+{% endblock %}

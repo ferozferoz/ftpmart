@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from decouple import config
 import psycopg2
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,14 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bh38y214ee3rh8k11re^-i%23)2%q#(^m0kc%&2^h2=m5=^xv('
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ftpmart.herokuapp.com"]
-
-
+#ALLOWED_HOSTS = ["citymart.herokuapp.com",]
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'ecomm_app',
     'ecomm_manage_app',
     'user_management_app',
-    'mathfilters'
+    'mathfilters',
+    'storages',
+
 ]
 
 CACHES = {
@@ -86,20 +88,24 @@ WSGI_APPLICATION = 'ftpmart.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default1': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
 
-    'default': {
+    'default1': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ftpmart',
-        'USER' : 'postgres',
-        'PASSWORD' : 'P@ssword',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -125,34 +131,49 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Asia/Kolkata'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS=[BASE_DIR / "static"]
-STATIC_ROOT= BASE_DIR / "static_cdb"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+USE_S3 = config('USE_S3')
+
+if USE_S3:
+    # aws settings
+    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    # s3 static settings
+    STATIC_LOCATION = config('STATIC_LOCATION')
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = config('STATICFILES_STORAGE')
+    # s3 public media settings
+    PUBLIC_MEDIA_LOCATION = config('PUBLIC_MEDIA_LOCATION')
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
+    # s3 private media settings
+    PRIVATE_MEDIA_LOCATION = config('PRIVATE_MEDIA_LOCATION')
+    PRIVATE_FILE_STORAGE = config('PRIVATE_FILE_STORAGE')
+else:
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+STATIC_URL = '/static_url/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_url')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "post.message883@gmail.com"
-EMAIL_HOST_PASSWORD = "M00merang@123"
-
-
-import dj_database_url
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')

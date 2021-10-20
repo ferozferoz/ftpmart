@@ -46,6 +46,7 @@ for users where the resource do not have permission, it should go back to the pr
 
 """
 
+
 class UserAccessMixin(PermissionRequiredMixin):
 
     def dispatch(self, request, *args, **kwargs):
@@ -56,6 +57,23 @@ class UserAccessMixin(PermissionRequiredMixin):
         return super(UserAccessMixin,self).dispatch(request,*args,**kwargs)
 
 
+"""managing product create, update, list"""
+
+
+class ProductCreateView(UserAccessMixin, CreateView):
+    template_name = "ecomm_manage_app/product_create.html"
+    form_class = ProductForm
+    success_url = reverse_lazy("ecomm_manage_app:product_list")
+    permission_required = 'ecomm_manage_app.add_item'
+
+    def form_valid(self, form):
+
+        p = form.save()
+        images = self.request.FILES.getlist("more_images")
+
+        return super().form_valid(form)
+
+
 class ProductListView(UserAccessMixin, ListView):
 
     template_name = "ecomm_manage_app/product_list.html"
@@ -64,14 +82,6 @@ class ProductListView(UserAccessMixin, ListView):
     permission_required = 'ecomm_manage_app.view_item'
     raise_exception = True
     permission_denied_message = "You dont have permissions to access the page"
-
-
-class CategoryListView(UserAccessMixin, ListView):
-
-    template_name = "ecomm_manage_app/category_list.html"
-    queryset = Category.objects.all().order_by("-id")
-    context_object_name = "all_categories"
-    permission_required = 'ecomm_manage_app.view_category'
 
 
 class ProductUpdateView(UserAccessMixin, UpdateView):
@@ -92,17 +102,15 @@ class ProductUpdateView(UserAccessMixin, UpdateView):
         return super().form_valid(form)
 
 
-class ProductCreateView(UserAccessMixin, CreateView):
-    template_name = "ecomm_manage_app/product_create.html"
-    form_class = ProductForm
-    success_url = reverse_lazy("ecomm_manage_app:product_list")
-    permission_required = 'ecomm_manage_app.add_item'
+"""managing category create, update, list"""
 
-    def form_valid(self, form):
-        p = form.save()
-        images = self.request.FILES.getlist("more_images")
 
-        return super().form_valid(form)
+class CategoryListView(UserAccessMixin, ListView):
+
+    template_name = "ecomm_manage_app/category_list.html"
+    queryset = Category.objects.all().order_by("-id")
+    context_object_name = "all_categories"
+    permission_required = 'ecomm_manage_app.view_category'
 
 
 class CategoryCreateView(UserAccessMixin, CreateView):
@@ -131,6 +139,9 @@ class CategoryUpdateView(UserAccessMixin, UpdateView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+"""managing supplier create, update, list"""
 
 
 class SupplierListView(UserAccessMixin, ListView):
@@ -169,6 +180,9 @@ class SupplierCreateView(UserAccessMixin, CreateView):
         return super().form_valid(form)
 
 
+"""managing warranty create, update, list"""
+
+
 class WarrantyCreateView(UserAccessMixin, CreateView):
     template_name = "ecomm_manage_app/warranty_create.html"
     form_class = WarrantyForm
@@ -205,6 +219,9 @@ class WarrantyListView(UserAccessMixin, ListView):
     permission_required = 'ecomm_manage_app.view_supplier'
 
 
+"""managing return policy create, update, list"""
+
+
 class ReturnPolicyCreateView(UserAccessMixin, CreateView):
     template_name = "ecomm_manage_app/return_policy_create.html"
     form_class = ReturnPolicyForm
@@ -239,6 +256,9 @@ class ReturnPolicyListView(UserAccessMixin, ListView):
     queryset = ReturnPolicy.objects.all().order_by("-id")
     context_object_name = "all_return_policy"
     permission_required = 'ecomm_manage_app.view_supplier'
+
+
+"""managing open order update, list"""
 
 
 class OpenOrdersListView(UserAccessMixin, ListView):
@@ -285,7 +305,6 @@ class OrderDeliveryUpdateView(UserAccessMixin, View):
             order.save()
 
         return render(request, self.template_name, context)
-
 
 
 def get_order_status(request):
