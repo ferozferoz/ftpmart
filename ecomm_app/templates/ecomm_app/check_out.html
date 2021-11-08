@@ -1,63 +1,203 @@
 {% extends 'ecomm_app/base.html' %}
 
-{% block title %}Checkout {% endblock %}
-
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Items in the cart</h3>
-            <a href="{% url 'ecomm_app:my_cart' %}">Update Cart</a>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>SN</th>
-                        <th>Product</th>
-                        <th>Rate</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cp in cart.cartproduct_set.all %}
-                    <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{cp.product.title}}</td>
-                        <td>{{cp.rate}}</td>
-                        <td>{{cp.quantity}}</td>
-                        <td>{{cp.subtotal}}</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <th colspan="4" class="text-right">Total</th>
-                        <th>Rs. {{cart.total}}</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-6" id="div_add">
-            {% if customer_exist == 0 %}
-            <h2 class="card-title">Ship to this address</h2>
-            <p id="name"><span class="font-weight-bold">Name: </span> {{customer.full_name}}</p>
-            <p id="mobile"><span class="font-weight-bold">Mobile: </span> {{customer.mobile}}</p>
-            <p id="house_no"><span class="font-weight-bold">House No: </span> {{customer.house_no}}</p>
-            <p id="street"><span class="font-weight-bold">Street: </span> {{customer.street}}</p>
-            <p id="city"><span class="font-weight-bold">City: </span> {{customer.city}}</p>
-            <p id="pin_code"><span class="font-weight-bold">Pin Code: </span> {{customer.pin_code}}</p>
-            <p id="landmark"><span class="font-weight-bold">Landmark: </span> {{customer.landmark}}</p>
-            <a onclick="editProfile()" class="btn btn-primary">Edit</a>
-            <a href="{% url 'ecomm_app:ship_order' %}" class="btn btn-primary">Ship to this Address</a>
-            {% else %}
-            <h3>Checkout Form</h3>
-            <form action="" method="POST" autocomplete="off">
-                {% csrf_token %}
-                {{form.as_p}}
-                <button class="btn btn-primary">Place Order</button>
-            </form>
-            {% endif %}
+{% load mathfilters %}
+<!-- Page Introduction Wrapper -->
+<div class="page-style-a">
+    <div class="container">
+        <div class="page-intro">
+            <h2>Checkout</h2>
+            <ul class="bread-crumb">
+                <li class="has-separator">
+                    <i class="ion ion-md-home"></i>
+                    <a href="{% url 'ecomm_app:home' %}">Home</a>
+                </li>
+                <li class="is-marked">
+                    <a href="{% url 'ecomm_app:check_out' %}">Checkout</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+<!-- Page Introduction Wrapper /- -->
+<!-- Checkout-Page -->
+<div class="page-checkout u-s-p-t-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+                    <div class="row">
+                        <!-- Checkout -->
+                        <div class="col-lg-6">
+                            <h4 class="section-h4">Your Order</h4>
+                            <div class="order-table">
+                                <table class="u-s-m-b-13">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for cp in cart.cartproduct_set.all %}
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">{{cp.product.name}}</h6>
+                                            <span class="order-span-quantity">x {{cp.quantity}}</span>
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6">Rs {{cp.subtotal|floatformat:2}}</h6>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td>
+                                            <h3 class="order-h3">Subtotal</h3>
+                                        </td>
+                                        <td>
+                                            <h3 class="order-h3">Rs {{cart.total|floatformat:2}}</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3 class="order-h3">Shipping</h3>
+                                        </td>
+                                        <td>
+                                            <h3 class="order-h3">Rs {{shipping|floatformat:2}}</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3 class="order-h3">Tax</h3>
+                                        </td>
+                                        <td>
+                                            <h3 class="order-h3">Rs 0.00</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3 class="order-h3">Total</h3>
+                                        </td>
+                                        <td>
+                                            <h3 class="order-h3">Rs {{cart.total|add:shipping|floatformat:2 }}</h3>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                        <!-- Checkout /- -->
+                        <!-- Billing-&-Shipping-Details -->
+                        <div class="col-lg-6" id="div_add">
+                            <h4 class="section-h4">Billing Details</h4>
+                            {% if customer_exist == 0 %}
+                            <div class="order-table">
+                                <table class="u-s-m-b-13">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">Full Name</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="name">{{customer.full_name}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">House Number</h6>
+
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="house_no">{{customer.house_no}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">Street</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="street">{{customer.street}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">House Number</h6>
+
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="landmark">{{customer.landmark}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">Pin Code</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="pin_code">{{customer.pin_code}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h6 class="order-h6">Mobile</h6>
+
+                                        </td>
+                                        <td>
+                                            <h6 class="order-h6" id="mobile">{{customer.mobile}}</h6>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a class="button button-outline-secondary" onclick="editProfile()">Edit</a>
+                                <a class="button button-outline-secondary" href="{% url 'ecomm_app:ship_order' %}"> Place Order</a>
+                            </div>
+                            {% else %}
+                            <!-- Form-Fields -->
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="u-s-m-b-13">
+                                    <label>Full Name</label>
+                                    <input class="form-control" class="text-field" id="form-name" name="full_name" type="text">
+                                </div>
+                                <div class="street-address u-s-m-b-13">
+                                    <label>Street Address
+                                    </label>
+                                    <input class="form-control" id="form-houseNo"
+                                           placeholder="Apartment, suite unit etc. (optional)" name="house_no" type="text">
+                                    <label class="sr-only"></label>
+                                    <input class="form-control" id="form-street"
+                                           placeholder="Street Name, block name" name="street" type="text">
+                                    <label class="sr-only"></label>
+                                    <input class="form-control" id="form-landmark"
+                                           placeholder="near xyz Bank, abc shop etc" name="landmark" type="text">
+                                </div>
+                                <div class="u-s-m-b-13">
+                                    <label>Pin code / Zip
+                                    </label>
+                                    <input class="form-control" id="form-pin" name="pin_code" type="text">
+                                </div>
+                                <div class="u-s-m-b-13">
+                                    <label>Mobile
+                                    </label>
+                                    <input class="form-control" id="form-mobile" name="mobile" type="text">
+                                </div>
+                                <button class="button button-outline-secondary">place order</button>
+
+                            </form>
+                            {% endif %}
+                            <!-- Form-Fields /- -->
+                        </div>
+
+                        <!-- Billing-&-Shipping-Details /- -->
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout-Page /- -->
 
 <script>
 var profileInfo;
@@ -68,37 +208,36 @@ function editProfile(){
     document.getElementById("div_add").innerHTML =
     `<form id="post-form-1">
     {% csrf_token %}
-    <div class="form-group col-md-4">
-    <label>Name</label>
-	<input type="text" id="form-name" class="form-control" value="${document.getElementById('name').childNodes[1].data}" ><br>
+	<h4 class="section-h4">Billing Details</h4>
+	<!-- Form-Fields -->
+	<div class="u-s-m-b-13">
+		<label>Full Name</label>
+		<input type="text" id="form-name" class="form-control" value="${document.getElementById('name').innerHTML}">
 	</div>
-	<div class="form-group col-md-4" >
-    <label>Mobile</label>
-	<input type="text" id="form-mobile" class="form-control" value="${document.getElementById('mobile').childNodes[1].data}"><br>
+
+	<div class="street-address u-s-m-b-13">
+		<label for="req-st-address">Street Address
+		</label>
+		<input type="text" id="form-houseNo" class="form-control" value="${document.getElementById('house_no').innerHTML}" placeholder="House name and street name">
+		<label class="sr-only" for="opt-st-address"></label>
+		<input type="text" id="form-street" class="form-control" value="${document.getElementById('street').innerHTML}" placeholder="Apartment, suite unit etc. (optional)">
+		<label class="sr-only" for="opt-st-address"></label>
+		<input type="text" id="form-landmark" class="form-control" value="${document.getElementById('landmark').innerHTML}" placeholder="near xyz Bank, abc shop etc">
 	</div>
-	<div class="form-group col-md-4">
-    <label>House No.</label>
-	<input type="text" id="form-houseNo" class="form-control" value="${document.getElementById('house_no').childNodes[1].data}" ><br>
+
+	<div class="u-s-m-b-13">
+		<label for="postcode">Postcode / Zip
+		</label>
+		<input type="text" id="form-pin" class="form-control" value="${document.getElementById('pin_code').innerHTML}">
 	</div>
-	<div class="form-group col-md-4">
-    <label>Street</label>
-	<input type="text" id="form-street" class="form-control" value="${document.getElementById('street').childNodes[1].data}" ><br>
+	<div class="u-s-m-b-13">
+		<label for="phone">Mobile
+		</label>
+		<input type="text" id="form-mobile" class="form-control" value="${document.getElementById('mobile').innerHTML}">
 	</div>
-	<div class="form-group col-md-4">
-    <label>city</label>
-	<input type="text" id="form-city" class="form-control" value="${document.getElementById('city').childNodes[1].data}"><br>
-	</div>
-	<div class="form-group col-md-4">
-    <label>pin code</label>
-	<input type="text" id="form-pin" class="form-control" value="${document.getElementById('pin_code').childNodes[1].data}"><br>
-	</div>
-	<div class="form-group col-md-4">
-    <label>land mark</label>
-	<input type="text" id="form-landmark" class="form-control" value="${document.getElementById('landmark').childNodes[1].data}"><br>
-	<button type="submit" class="btn btn-primary">Submit</button>
+	 <button type="submit" class="button button-outline-secondary">Save</button>
 	</form>
-	<button type="submit" class="btn btn-primary" onclick="cancelEditForm()">Cancel</button>
-	</div>`;
+	<button type="submit" class="button button-outline-secondary" onclick="cancelEditForm()">Cancel</button>`;
 
 }
 
@@ -131,12 +270,7 @@ $(document).on('submit','#post-form-1',function(e){
 
     })
 })
+
 </script>
 
-
 {% endblock %}
-
-
-
-
-

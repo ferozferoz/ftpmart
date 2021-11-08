@@ -1,4 +1,9 @@
+import sys
 
+from PIL import Image
+from io import BytesIO
+
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -88,14 +93,53 @@ class Item(models.Model):
     image_5 = models.FileField(null=True,blank=True)
 
     view_count = models.PositiveIntegerField(default=0)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    availability = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):  # new
+        # creating slug automatically
         if not self.slug:
             self.slug = slugify(self.name)
+
+        # resizing image to 340 x 340 before saving it
+        if self.image_1:
+            im = Image.open(self.image_1)
+            # Resize/modify the image
+            im = im.resize((340,340))
+            # after modifications, save it to the output
+            im.save(self.image_1.path, format='JPEG', quality=90)
+
+        if self.image_2:
+            im = Image.open(self.image_2)
+            # Resize/modify the image
+            im = im.resize((340, 340))
+            # after modifications, save it to the output
+            im.save(self.image_2.path, format='JPEG', quality=90)
+
+        if self.image_3:
+            im = Image.open(self.image_3)
+            # Resize/modify the image
+            im = im.resize((340, 340))
+            # after modifications, save it to the output
+            im.save(self.image_3.path, format='JPEG', quality=90)
+
+        if self.image_4:
+            im = Image.open(self.image_4)
+            # Resize/modify the image
+            im = im.resize((340, 340))
+            # after modifications, save it to the output
+            im.save(self.image_4.path, format='JPEG', quality=90)
+
+        if self.image_5:
+            im = Image.open(self.image_5)
+            # Resize/modify the image
+            im = im.resize((340, 340))
+            # after modifications, save it to the output
+            im.save(self.image_5.path, format='JPEG', quality=90)
+
         return super().save(*args, **kwargs)
 
 

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
 from pathlib import Path
 import os
 from decouple import config
@@ -27,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ["citymart.herokuapp.com",]
+ALLOWED_HOSTS = ["citymart.herokuapp.com",]
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'ecomm_app.custom_context.render_ecomm_app_context'
+
             ],
         },
     },
@@ -140,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-USE_S3 = config('USE_S3')
+USE_S3 = False
 
 if USE_S3:
     # aws settings
@@ -164,11 +167,9 @@ if USE_S3:
 else:
     MEDIA_URL = "/media/"
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-STATIC_URL = '/static_url/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_url')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_url')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

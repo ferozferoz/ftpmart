@@ -58,7 +58,7 @@ class ProductForm(forms.ModelForm):
         model = Item
         fields = ["name", "category","sub_category", "image_1", "image_2", "image_3", "image_4", "image_5",
                   "cost_price", "display_original_selling_price", "display_new_selling_price", "description",
-                  "warranty", "return_policy", "supplier", "is_active"]
+                  "warranty", "return_policy", "supplier", "is_active", "availability"]
         widgets = {
             "name": forms.TextInput(attrs={
                 "class": "form-control",

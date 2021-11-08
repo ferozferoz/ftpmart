@@ -1,18 +1,13 @@
 from django.contrib.auth.views import redirect_to_login
 from django.http import JsonResponse
-from django.shortcuts import render
 
 # Create your views here.
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, View, CreateView, FormView, DetailView, ListView, UpdateView
-from django.contrib.auth import authenticate, login, logout
-from django.conf import settings
-from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.db.models import Q
 from .forms import *
-from user_management_app.views import LoginView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import Item,Category
 from ecomm_app.models import Order, Delivery
@@ -25,10 +20,6 @@ class AdminRequiredMixin(object):
         else:
             return redirect("/manager-login/")
         return super().dispatch(request, *args, **kwargs)
-
-
-class ManagerLoginView(AdminRequiredMixin,LoginView):
-    success_url = reverse_lazy("ecomm_manage_app:manager_home")
 
 
 class ManagerHomeView(AdminRequiredMixin, TemplateView):
@@ -66,13 +57,6 @@ class ProductCreateView(UserAccessMixin, CreateView):
     success_url = reverse_lazy("ecomm_manage_app:product_list")
     permission_required = 'ecomm_manage_app.add_item'
 
-    def form_valid(self, form):
-
-        p = form.save()
-        images = self.request.FILES.getlist("more_images")
-
-        return super().form_valid(form)
-
 
 class ProductListView(UserAccessMixin, ListView):
 
@@ -96,11 +80,6 @@ class ProductUpdateView(UserAccessMixin, UpdateView):
         id_ = self.kwargs.get("slug")
         return get_object_or_404(Item, slug=id_)
 
-    def form_valid(self, form):
-        product_name = form.cleaned_data.get("name")
-        p = form.save()
-        return super().form_valid(form)
-
 
 """managing category create, update, list"""
 
@@ -119,10 +98,6 @@ class CategoryCreateView(UserAccessMixin, CreateView):
     success_url = reverse_lazy("ecomm_manage_app:category_list")
     permission_required = 'ecomm_manage_app.add_category'
 
-    def form_valid(self, form):
-        p = form.save()
-        return super().form_valid(form)
-
 
 class CategoryUpdateView(UserAccessMixin, UpdateView):
     template_name = "ecomm_manage_app/category_create.html"
@@ -135,10 +110,6 @@ class CategoryUpdateView(UserAccessMixin, UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("slug")
         return get_object_or_404(Category, slug=id_)
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 """managing supplier create, update, list"""
@@ -163,21 +134,12 @@ class SupplierUpdateView(UserAccessMixin, UpdateView):
         id_ = self.kwargs.get("slug")
         return get_object_or_404(Supplier, slug=id_)
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
 
 class SupplierCreateView(UserAccessMixin, CreateView):
     template_name = "ecomm_manage_app/supplier_create.html"
     form_class = SupplierForm
     success_url = reverse_lazy("ecomm_manage_app:supplier_list")
     permission_required = 'ecomm_manage_app.add_supplier'
-
-    def form_valid(self, form):
-        form.save()
-
-        return super().form_valid(form)
 
 
 """managing warranty create, update, list"""
@@ -188,10 +150,6 @@ class WarrantyCreateView(UserAccessMixin, CreateView):
     form_class = WarrantyForm
     success_url = reverse_lazy("ecomm_manage_app:warranty_list")
     permission_required = 'ecomm_manage_app.add_supplier'
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 class WarrantyUpdateView(UserAccessMixin, UpdateView):
@@ -206,10 +164,6 @@ class WarrantyUpdateView(UserAccessMixin, UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("pk")
         return get_object_or_404(Warranty, id=id_)
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 class WarrantyListView(UserAccessMixin, ListView):
@@ -228,10 +182,6 @@ class ReturnPolicyCreateView(UserAccessMixin, CreateView):
     success_url = reverse_lazy("ecomm_manage_app:return_policy_list")
     permission_required = 'ecomm_manage_app.add_supplier'
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
 
 class ReturnPolicyUpdateView(UserAccessMixin, UpdateView):
 
@@ -245,10 +195,6 @@ class ReturnPolicyUpdateView(UserAccessMixin, UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("pk")
         return get_object_or_404(ReturnPolicy, id=id_)
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
 
 
 class ReturnPolicyListView(UserAccessMixin, ListView):

@@ -7,7 +7,7 @@ app_name= "ecomm_manage_app"
 
 urlpatterns = [
 
-        path("manager-login/", ManagerLoginView.as_view(), name="manager_login"),
+        #path("manager-login/", ManagerLoginView.as_view(), name="manager_login"),
         path("manager-home/", ManagerHomeView.as_view(), name="manager_home"),
         path("manage-order-details/<int:pk>/", OrderDeliveryDetailView.as_view(), name="order_delivery_details"),
         path("manage-order-details/<int:pk>/update", OrderDeliveryUpdateView.as_view(), name="order_delivery_update"),

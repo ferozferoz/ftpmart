@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 
 from ecomm_app.models import Customer, User
 
-
+"""
 class RegistrationForm(forms.Form):
 
     email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -27,6 +27,7 @@ class RegistrationForm(forms.Form):
             raise forms.ValidationError(
                 "Password do not match, re-enter")
         return pwd
+"""
 
 
 class LoginForm(forms.Form):

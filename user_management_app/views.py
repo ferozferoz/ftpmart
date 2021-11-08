@@ -12,10 +12,10 @@ import http
 
 
 # Create your views here.
-
+"""
 class RegistrationView(FormView):
 
-    template_name = "user_management_app/customer_registration.html"
+    template_name = "ecomm_app/customer_registration.html"
     form_class = RegistrationForm
     success_url = reverse_lazy("ecomm_app:home")
 
@@ -35,7 +35,7 @@ class RegistrationView(FormView):
         # send_mail( subject, message, email_from, recipient_list )
         return super().form_valid(form)
 
-
+"""
 class LogoutView(View):
 
     redirect_url="ecomm_app:home"

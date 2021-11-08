@@ -2,87 +2,93 @@
 <title>{% block title %}Home{% endblock %}</title></head>
 
 {% block content %}
-{% load mathfilters %}
-<div class = "products">
-    <div class="product-items">
-        {% for p in all_items %}
-        <div class="product">
-            <div class="product-content">
-                 <a href="{% url 'ecomm_app:product_detail' p.slug %}" >
-                <div class="product-img">
-
-                    <img src="{{p.image_1.url}}" alt="product image">
-
-                </div>
-                     </a>
-                <div class="product-btns">
-                    <a href="{% url 'ecomm_app:add_to_cart' p.id %}" class="btn btn-cart"> add to
-                        cart <span><i class="fas fa-plus"></i></span>
-                    </a>
-
-                    <a href="{% url 'ecomm_app:add_to_cart' p.id %}" class="btn btn-buy"> buy now
-                        <span><i class="fas fa-shopping-cart"></i></span>
-                    </a>
+<!-- Main-Slider -->
+    <div class="default-height ph-item">
+        <div class="slider-main owl-carousel">
+            <div class="bg-image one">
+                <div class="slide-content slide-animation">
+                    <h1>Casual Clothing</h1>
+                    <h2>lifestyle / clothing / hype</h2>
                 </div>
             </div>
-
-            <div class="product-info">
-                <div class="product-info-top">
-                    <h2 class="sm-title">lifestyle</h2>
-                    <div class="rating">
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="far fa-star"></i></span>
-                    </div>
+            <div class="bg-image two">
+                <div class="slide-content-2 slide-animation">
+                    <h2 class="slide-2-h2-a">Hiking</h2>
+                    <h2 class="slide-2-h2-b">Collection</h2>
+                    <h1>2018</h1>
                 </div>
-                <a href="{% url 'ecomm_app:product_detail' p.slug %}" class="product-name">{{p.name}}</a>
-                <p class="product-price">Rs. {{p.display_original_selling_price}} </p>
-                <p class="product-price">Rs. {{p.display_new_selling_price}}</p>
             </div>
-            <div class="off-info">
-                {% with numerator=p.display_original_selling_price|sub:p.display_new_selling_price|mul:100 %}
-
-                <h2 class="sm-title">{{numerator |div:p.display_original_selling_price|floatformat:0 }} % off</h2>
-                {% endwith%}
+            <div class="bg-image three">
+                <div class="slide-content slide-animation">
+                    <h1>Tech
+                        <span style="color:#333">Deals</span>
+                    </h1>
+                    <h2 style="color:#333"># shopping</h2>
+                </div>
             </div>
         </div>
-
-        {% endfor %}
     </div>
-</div>
+    <!-- Main-Slider /- -->
 
-    <nav aria-label="...">
-        <ul class="pagination">
-            {% if product_list.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ product_list.previous_page_number }}">Previous</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            {% endif %}
+    <!-- Banner-Layer /- -->
+    <!-- Men-Clothing -->
+    {% for category in category_nav %}
+	<section class="section-maker">
+        <div class="container">
+            <div class="sec-maker-header text-center">
+                <h3 class="sec-maker-h3">{{category}}</h3>
+                <ul class="nav tab-nav-style-1-a justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#men-latest-products">Latest Products</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrapper-content">
+                <div class="outer-area-tab">
+                    <div class="tab-content">
+                        <div class="tab-pane active show fade" id="men-latest-products">
+                            <div class="slider-fouc">
+                                <div class="products-slider owl-carousel" data-item="4">
+								{% for product in category.category.all %}
+                                     <div class="item">
+                                        <div class="image-container">
+                                            <a class="item-img-wrapper-link" href="{% url 'ecomm_app:product_detail' product.slug %}">
+                                                <img class="img-fluid" src="{{product.image_1.url}}" alt="Product">
+                                            </a>
+                                            <div class="item-action-behaviors">
+                                                <a class="item-addCart" href="{% url 'ecomm_app:add_to_cart' product.id %}">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="what-product-is">
+                                                <h6 class="item-title">
+                                                    <a href="{% url 'ecomm_app:product_detail' product.slug %}">{{product.name}}</a>
+                                                </h6>
+                                            </div>
+                                            <div class="price-template">
+                                                <div class="item-new-price">
+                                                    Rs {{product.display_new_selling_price}}
+                                                </div>
+                                                <div class="item-old-price">
+                                                    Rs {{product.display_original_selling_price}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tag new">
+                                            <span>NEW</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </section>
+	{% endfor %}
 
-            {% for i in product_list.paginator.page_range %}
-            {% if i == product_list.number %}
-            <li class="page-item active"><a class="page-link">{{i}}</a></li>
-            {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-            {% endif %}
-            {% endfor %}
-
-            {% if product_list.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ product_list.next_page_number }}">Next</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
+    <!-- Men-Clothing /- -->
 
 {% endblock %}

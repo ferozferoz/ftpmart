@@ -2,8 +2,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Customer
-from phonenumber_field.formfields import PhoneNumberField
+from .models import Customer,User
+from django.core.validators import RegexValidator
 
 
 class CheckoutForm(forms.ModelForm):
@@ -58,4 +58,30 @@ class CheckoutForm(forms.ModelForm):
             raise ValidationError(
                 "landmark cannot be empty"
             )
+
+
+class RegistrationForm(forms.Form):
+
+    name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    email = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    mobile = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}),
+            validators=[RegexValidator(regex=r'^\+?1?\d{10,13}$',
+            message="Phone number must have 10 phone digits, you can add +91 for mobile")], max_length=13)  # validators should be a list
+
+    def clean_email(self):
+        uname = self.cleaned_data.get("email")
+        if User.objects.filter(username=uname).exists():
+            raise forms.ValidationError(
+                "Customer with this email/username already exists.")
+        return uname
+
+    def clean_mobile(self):
+        mobile = self.cleaned_data.get("mobile")
+        if Customer.objects.filter(mobile=mobile).exists():
+            raise forms.ValidationError(
+                "Mobile number already exists in database")
+        return mobile
+
+
+
 

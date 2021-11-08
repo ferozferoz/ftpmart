@@ -1,43 +1,70 @@
 {% extends 'ecomm_app/base.html' %}
-{% block title %}Customer Registration{% endblock %}
 {% block content %}
 
-<div class="container mt-5 pt-4">
-
-    <div class="col-6 mx-auto">
-        <h3 class="text-center">Register</h3>
-        <form method="post">
-            {% csrf_token %}
-
-            {% if message %}
-            <div class="alert alert-{{class}}">
-                {{message}}
-            </div>
-            {% endif %}
-
-            <div class="row">
-                <div class="form-group col-12">
-                    <input type="text" placeholder="Email" class="form-control" name="email" id="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-12">
-                    <input type="text" placeholder="Name" class="form-control" name="name" id="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-12">
-                    <input type="text" placeholder="Mobile" class="form-control" name="mobile" id="">
-                </div>
-            </div>
-
-            <p>Already have account <a href="{% url 'user_management_app:login' %}">Login</a></p>
-            <button class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
+<!-- Page Introduction Wrapper -->
+<div class="page-style-a">
+	<div class="container">
+		<div class="page-intro">
+			<h2>Account</h2>
+			<ul class="bread-crumb">
+				<li class="has-separator">
+					<i class="ion ion-md-home"></i>
+					<a href="home.html">Home</a>
+				</li>
+				<li class="is-marked">
+					<a href="account.html">Account</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
+<!-- Page Introduction Wrapper /- -->
+<!-- Account-Page -->
+<div class="page-account u-s-p-t-80">
+	<div class="container">
+		<div class="row">
+			<!-- Login -->
+			<div class="col-lg-12">
+                    <div class="reg-wrapper">
+                        <h2 class="account-h2 u-s-m-b-20">Register</h2>
+                        <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order status and history.</h6>
+                        <form>
+                            <div class="u-s-m-b-30">
+                                <label for="user-name">Username
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="user-name" class="text-field" placeholder="Username">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="email">Email
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="email" class="text-field" placeholder="Email">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="password">Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="password" class="text-field" placeholder="Password">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <input type="checkbox" class="check-box" id="accept">
+                                <label class="label-text no-color" for="accept">I’ve read and accept the
+                                    <a href="terms-and-conditions.html" class="u-c-brand">terms & conditions</a>
+                                </label>
+                            </div>
+                            <div class="u-s-m-b-45">
+                                <button class="button button-primary w-100">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			<!-- Login /- -->
 
+		</div>
+	</div>
+</div>
+<!-- Account-Page /- -->
 {% endblock %}
 
 

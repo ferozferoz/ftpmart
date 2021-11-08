@@ -1,78 +1,195 @@
 {% extends 'ecomm_app/base.html' %}
-{% block title %}Product{% endblock %}
 {% block content %}
-<div class = "card-wrapper">
-  <div class = "card">
-	<!-- card left -->
-	<div class = "prod-imgs">
-	  <div class = "img-display">
-		<div class = "img-showcase">
-            <img src = {{product.image_1.url}} alt = "shoe image">
-
+{% load mathfilters %}
+<!-- Page Introduction Wrapper -->
+<div class="page-style-a">
+	<div class="container">
+		<div class="page-intro">
+			<h2>Detail</h2>
+			<ul class="bread-crumb">
+				<li class="has-separator">
+					<i class="ion ion-md-home"></i>
+					<a href="{% url 'ecomm_app:home' %}">Home</a>
+				</li>
+				<li class="is-marked">
+					<a href=#>Product Details</a>
+				</li>
+			</ul>
 		</div>
-	  </div>
-	  <div class = "img-select">
-		<div class = "img-item">
-		  <a href = "#" data-id = "1">
-			{% if product.image_1 %}
-
-              <img src = {{product.image_1.url}} alt = "shoe image">
-              {% endif %}
-		  </a>
-		</div>
-
-
-	  </div>
 	</div>
-	<!-- card right -->
-	<div class = "prod-content">
-	  <h2 class = "prod-title">{{product.name}}</h2>
-	  <div class = "prod-price">
-		<p class = "last-price">Old Price: <span>Rs {{product.display_original_selling_price}}</span></p>
-		<p class = "new-price">New Price: <span>Rs.{{product.display_new_selling_price}}</span></p>
-	  </div>
-
-	  <div class = "prod-detail">
-		<h2>about this item: </h2>
-		<p>{{product.description}}</p>
-		<ul>
-		  <li>Quantity: <span>{{product.sell_quantity}}</span></li>
-		  <li>Available: <span>in stock</span></li>
-		  <li>Category: <span>{{product.category.name}}</span></li>
-		  <li>Sub Category: <span>{{product.sub_category.name}}</span></li>
-		</ul>
-	  </div>
-
-	  <div class = "purchase-info">
-		<input type = "number" min = "0" value = "1">
-		<button type = "button" class = "btn">
-		  Add to Cart <i class = "fas fa-shopping-cart"></i>
-		</button>
-      </div>
-	</div>
-  </div>
 </div>
+<!-- Page Introduction Wrapper /- -->
+<!-- Single-Product-Full-Width-Page -->
+<div class="page-detail u-s-p-t-80">
+	<div class="container">
+		<!-- Product-Detail -->
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<!-- Product-zoom-area -->
+				<div class="zoom-area">
+					<img id="zoom-pro" class="img-fluid" src={{product.image_1.url}} data-zoom-image={{product.image_1.url}} alt="Zoom Image">
+					<div id="gallery" class="u-s-m-t-10">
+						{% if product.image_1 %}
+						<a class="active" data-image={{product.image_1.url}} data-zoom-image={{product.image_1.url}}>
+							<img src={{product.image_1.url}} alt="Product">
+						</a>
+						{% endif%}
+						{% if product.image_2 %}
+						<a data-image={{product.image_2.url}} data-zoom-image={{product.image_2.url}}>
+							<img src={{product.image_2.url}} alt="Product">
+						</a>
+						{% endif%}
+						{% if product.image_3 %}
+						<a data-image={{product.image_3.url}} data-zoom-image={{product.image_3.url}}>
+							<img src={{product.image_3.url}} alt="Product">
+						</a>
+						{% endif%}
+						{% if product.image_4 %}
+						<a data-image={{product.image_4.url}} data-zoom-image={{product.image_4.url}}>
+							<img src={{product.image_4.url}} alt="Product">
+						</a>
+						{% endif%}
+						{% if product.image_5 %}
+						<a data-image={{product.image_5.url}} data-zoom-image={{product.image_5.url}}>
+							<img src={{product.image_5.url}} alt="Product">
+						</a>
+						{% endif%}
+					</div>
+				</div>
+				<!-- Product-zoom-area /- -->
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<!-- Product-details -->
+				<form action="" method="POST">
+					{% csrf_token %}
+					<div class="section-1-title-breadcrumb-rating">
+						<div class="product-title">
+							<h1>
+								<a href="single-product.html">{{product.name}}</a>
+							</h1>
+						</div>
+						<ul class="bread-crumb">
+							<li class="has-separator">
+								<a href="{% url 'ecomm_app:home' %}">Home</a>
+							</li>
+							<li class="has-separator">
+								<a href="{% url 'ecomm_app:shop_category' product.category.slug %}">{{product.category}}</a>
+							</li>
+							<li class="has-separator">
+								<a href="{% url 'ecomm_app:shop_category_subcategory' product.sub_category.slug%}">{{product.sub_category}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="section-2-short-description u-s-p-y-14">
+						<h6 class="information-heading u-s-m-b-8">Description:</h6>
+						<p>{{product.description}}
+						</p>
+					</div>
+					<div class="section-3-price-original-discount u-s-p-y-14">
+						<div class="price">
+							<h4>Rs.{{product.display_new_selling_price}} </h4>
+						</div>
+						<div class="original-price">
+							<span>Original Price:</span>
+							<span>Rs.{{product.display_original_selling_price}}</span>
+						</div>
+						{% with numerator=product.display_original_selling_price|sub:product.display_new_selling_price %}
 
-<script>
+						<div class="discount-price">
+							<span>Discount:</span>
+							<span>{{numerator |div:product.display_original_selling_price|mul:100|floatformat:0 }} % </span>
+						</div>
 
-const imgs = document.querySelectorAll('.img-select a');
-const imgBtns = [...imgs];
-let imgId = 1;
+						<div class="total-save">
+							<span>Save:</span>
+							<span>Rs {{numerator}}</span>
+						</div>
+						{% endwith %}
+					</div>
+					<div class="section-4-sku-information u-s-p-y-14">
+						<h6 class="information-heading u-s-m-b-8">Item id: #{{product.id}}</h6>
+						<div class="availability">
+							<span>Availability:</span>
+							{% if product.availability == 1 %}
+							<span> In Stock</span>
+							{% else %}
+							<span> Out of Stock</span>
+							{% endif %}
+						</div>
+					</div>
+					<div class="section-6-social-media-quantity-actions u-s-p-y-14">
 
-imgBtns.forEach((imgItem) => {
-imgItem.addEventListener('click', (event) => {
-	event.preventDefault();
-	imgId = imgItem.dataset.id;
-	slideImage();
-});
-});
+							<div class="quantity-wrapper u-s-m-b-22">
+								<span>Quantity:</span>
+								<div class="quantity">
+									<input type="text" name = "quantity" class="quantity-text-field" value="1">
+									<a class="plus-a" data-max="1000">&#43;</a>
+									<a class="minus-a" data-min="1">&#45;</a>
+									<input type="hidden" name="item_id" value="{{ product.id }}">
+								</div>
+							</div>
+							<div>
+								<button class="button button-outline-secondary" type="submit">Add to cart</button>
+							</div>
 
-function slideImage(){
-const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+					</div>
+				</form>
+				</div>
+				<!-- Product-details /- -->
+			</div>
+		</div>
+		<!-- Product-Detail /- -->
 
-document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-}
+		<!-- Different-Product-Section -->
+		<div class="detail-different-product-section u-s-p-t-80">
+			<!-- Similar-Products -->
+			<section class="section-maker">
+				<div class="container">
+					<div class="sec-maker-header text-center">
+						<h3 class="sec-maker-h3">Similar Products</h3>
+					</div>
+					<div class="slider-fouc">
+						<div class="products-slider owl-carousel" data-item="4">
+							{% for product in sim_prod %}
+                                     <div class="item">
+                                        <div class="image-container">
+                                            <a class="item-img-wrapper-link" href="{% url 'ecomm_app:product_detail' product.slug %}">
+                                                <img class="img-fluid" src="{{product.image_1.url}}" alt="Product">
+                                            </a>
+                                            <div class="item-action-behaviors">
+                                                <a class="item-addCart" href="{% url 'ecomm_app:add_to_cart' product.id %}">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="item-content">
+                                            <div class="what-product-is">
+                                                <h6 class="item-title">
+                                                    <a href="{% url 'ecomm_app:product_detail' product.slug %}">{{product.name}}</a>
+                                                </h6>
+                                            </div>
+                                            <div class="price-template">
+                                                <div class="item-new-price">
+                                                    {{product.display_new_selling_price}}
+                                                </div>
+                                                <div class="item-old-price">
+                                                    {{product.display_original_selling_price}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tag new">
+                                            <span>NEW</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
 
-window.addEventListener('resize', slideImage);
-</script>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Similar-Products /- -->
+
+		</div>
+		<!-- Different-Product-Section /- -->
+	</div>
+</div>
+<!-- Single-Product-Full-Width-Page /- -->
 {% endblock %}
